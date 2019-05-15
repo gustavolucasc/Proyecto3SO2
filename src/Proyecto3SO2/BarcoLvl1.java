@@ -21,9 +21,9 @@ public class BarcoLvl1 extends Personaje{
     }
             
     public BarcoLvl1(int equipo){
-        nombrePersonaje = "BarcoLvl1"; //getAtributo("nombre");
+        nombrePersonaje = "Barco Liviano"; //getAtributo("nombre");
        
-        nomIcono=path+"BarcoLvl1.png";//getAtributo("nomIcono");
+        nomIcono=path+"barcoLvl1.png";//getAtributo("nomIcono");
      
         this.equipo = equipo;
         Icono = this.cargarImagenes(nomIcono);

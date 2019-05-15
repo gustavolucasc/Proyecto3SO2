@@ -1,0 +1,65 @@
+@startuml
+abstract class JuegoXYZ.Personaje
+annotation java.lang.Override
+annotation java.lang.SuppressWarnings
+class JuegoXYZ.AmbienteGUI
+class JuegoXYZ.Bruja
+class JuegoXYZ.CasillasGUI
+class JuegoXYZ.Elfo
+class JuegoXYZ.Estadistica
+class JuegoXYZ.Humano
+class JuegoXYZ.Inicial
+class JuegoXYZ.JPanel
+class JuegoXYZ.Ladron
+class JuegoXYZ.PanelInformacion
+class JuegoXYZ.TableroGUI
+class java.awt.Color
+class java.awt.FlowLayout
+class java.awt.Image
+class java.awt.Toolkit
+class java.util.ArrayList
+class java.util.Vector
+class javax.swing.BorderFactory
+class javax.swing.ImageIcon
+class javax.swing.JFrame
+class javax.swing.JLabel
+class javax.swing.JPanel
+class org.netbeans.lib.awtextra.AbsoluteConstraints
+class org.netbeans.lib.awtextra.AbsoluteLayout
+interface JuegoXYZ.Equipo
+interface JuegoXYZ.MouseListener
+JuegoXYZ.Personaje ..> java.lang.Override
+JuegoXYZ.Personaje ..> javax.swing.ImageIcon
+JuegoXYZ.Personaje --|> JuegoXYZ.Equipo
+JuegoXYZ.AmbienteGUI ..> java.lang.SuppressWarnings
+JuegoXYZ.AmbienteGUI ..> java.awt.Color
+JuegoXYZ.AmbienteGUI ..> java.awt.FlowLayout
+JuegoXYZ.AmbienteGUI ..> java.awt.Image
+JuegoXYZ.AmbienteGUI ..> java.awt.Toolkit
+JuegoXYZ.AmbienteGUI ..> java.util.ArrayList
+JuegoXYZ.AmbienteGUI ..> javax.swing.BorderFactory
+JuegoXYZ.AmbienteGUI ..> javax.swing.ImageIcon
+JuegoXYZ.AmbienteGUI --|> javax.swing.JFrame
+JuegoXYZ.AmbienteGUI ..> javax.swing.JLabel
+JuegoXYZ.AmbienteGUI ..> javax.swing.JPanel
+JuegoXYZ.Bruja --|> JuegoXYZ.Personaje
+JuegoXYZ.Bruja ..> java.lang.Override
+JuegoXYZ.CasillasGUI ..> java.util.ArrayList
+JuegoXYZ.CasillasGUI --|> javax.swing.JPanel
+JuegoXYZ.CasillasGUI --|> JuegoXYZ.MouseListener
+JuegoXYZ.Elfo --|> JuegoXYZ.Personaje
+JuegoXYZ.Elfo ..> java.lang.Override
+JuegoXYZ.Humano --|> JuegoXYZ.Personaje
+JuegoXYZ.Humano ..> java.lang.Override
+JuegoXYZ.Ladron --|> JuegoXYZ.Personaje
+JuegoXYZ.Ladron ..> java.lang.Override
+JuegoXYZ.PanelInformacion ..> java.lang.SuppressWarnings
+JuegoXYZ.PanelInformacion --|> JuegoXYZ.JPanel
+JuegoXYZ.PanelInformacion ..> java.util.ArrayList
+JuegoXYZ.PanelInformacion ..> java.util.Vector
+JuegoXYZ.PanelInformacion ..> org.netbeans.lib.awtextra.AbsoluteConstraints
+JuegoXYZ.PanelInformacion ..> org.netbeans.lib.awtextra.AbsoluteLayout
+JuegoXYZ.TableroGUI ..> java.util.ArrayList
+JuegoXYZ.TableroGUI --|> javax.swing.JPanel
+JuegoXYZ.Equipo ..> java.util.ArrayList
+@enduml

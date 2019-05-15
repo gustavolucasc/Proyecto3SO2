@@ -30,6 +30,7 @@ public class PanelControl extends JPanel {
     
     private JPanel panelinformacion;
     private JComboBox x,y;
+    private JLabel lblip;
     
     int tamTabX,tamTabY;
 
@@ -83,6 +84,17 @@ public class PanelControl extends JPanel {
                 jComboBoxActionPerformed(evt);
             }
         });
+        
+        //label ip
+        lblip = new JLabel();
+        Font tipoLetra = lblip.getFont();
+        lblip.setText("Ip contrincante");
+        lblip.setForeground(Color.WHITE);
+        lblip.setFont(new Font(tipoLetra.getName(),Font.PLAIN,18));
+        panelinformacion.add(lblip, new AbsoluteConstraints(20, 5, 10, -1));
+        
+        JTextField ip = new JTextField("",20);
+        panelinformacion.add(ip, new AbsoluteConstraints(30, 5, 10, -1));
         
         panelinformacion.add(x, new AbsoluteConstraints(15, 20, 40, -1));
         panelinformacion.add(y, new AbsoluteConstraints(25, 50, 40, -1));

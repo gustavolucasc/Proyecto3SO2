@@ -65,7 +65,7 @@ public class AmbienteGUI extends JFrame implements Observer{
     
     public AmbienteGUI() {
         
-        setContentPane(new JLabel(new ImageIcon("src/Proyecto3SO2/iconos/nuevos/fondo.png")));
+        setContentPane(new JLabel(new ImageIcon(AmbienteGUI.class.getResource("iconos/fondo.png"))));
         setLayout(new FlowLayout());
         initComponents();
         

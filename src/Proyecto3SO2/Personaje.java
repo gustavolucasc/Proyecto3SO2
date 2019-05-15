@@ -22,7 +22,7 @@ import javax.swing.ImageIcon;
 public abstract class  Personaje implements Equipo{
     protected String nombrePersonaje;
     protected int vida;
-    protected String path="iconos/img/";
+    protected String path="iconos/";
     protected String nomIcono;
     
     protected int equipo;

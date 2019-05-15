@@ -268,7 +268,7 @@ public class PanelInformacion extends JPanel {
         magia.setText(""); 
         elemento.setText("");
         alcance.setText("");
-        imagen2.setIcon(new ImageIcon(Personaje.cargarFondo("iconos/nuevos/blanco.png").getImage().getScaledInstance(100,100,java.awt.Image.SCALE_SMOOTH)));
+        imagen2.setIcon(new ImageIcon(Personaje.cargarFondo("iconos/blanco.png").getImage().getScaledInstance(100,100,java.awt.Image.SCALE_SMOOTH)));
     }    
    
 }

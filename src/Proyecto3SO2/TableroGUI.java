@@ -154,7 +154,11 @@ public class TableroGUI extends javax.swing.JPanel {
         this.casillaOrigen = casillaOrigen;
     }
 
-    
+    public void sonido (String nombre){
+       Player c = new Player(nombre);
+       Thread t  = new Thread(c);
+       t.start();
+    }
 
     
     public void pintar(int x, int y,ImageIcon Imagen){

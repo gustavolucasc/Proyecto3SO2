@@ -36,7 +36,7 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
     
 
     
-    private Personaje personaje;
+    private Personaje personaje; 
     
     
     public CasillasGUI() {        
@@ -135,6 +135,7 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
     
     
     private void ejecutaAccion (int [] casillaSeleccionada){
+        
         switch (tablero.accion){
             case TableroGUI.SELECCIONAR:
                 if (personaje != null) 
@@ -159,6 +160,7 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
                 }
                 else
                    if (personaje != null) {
+                       tablero.sonido("acerto");
                      if (personaje.getEquipo() != tablero.getTurnoDe()){
                          tablero.getCasillaOrigen().personaje.atacar(personaje);
                          if (personaje.getVida()== 0){
@@ -186,7 +188,7 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
                      }
                    }
                    else {
-                       
+                       tablero.sonido("fallo");
                        personaje = tablero.getCasillaOrigen().personaje;
                        estaMarcada = false;
                        nuevoFondo=tablero.getCasillaOrigen().fondo;

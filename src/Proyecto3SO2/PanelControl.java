@@ -30,7 +30,8 @@ public class PanelControl extends JPanel {
     
     private JPanel panelinformacion;
     private JComboBox x,y;
-    private JLabel lblip;
+    private JLabel lblip, lblPuerto, lblx, lbly;
+    private JTextField ip, puerto;
     
     int tamTabX,tamTabY;
 
@@ -88,16 +89,47 @@ public class PanelControl extends JPanel {
         //label ip
         lblip = new JLabel();
         Font tipoLetra = lblip.getFont();
-        lblip.setText("Ip contrincante");
+        lblip.setText("IP contrincante:");
         lblip.setForeground(Color.WHITE);
         lblip.setFont(new Font(tipoLetra.getName(),Font.PLAIN,18));
-        panelinformacion.add(lblip, new AbsoluteConstraints(20, 5, 10, -1));
+        panelinformacion.add(lblip, new AbsoluteConstraints(165, 18, 220, -1));
         
-        JTextField ip = new JTextField("",20);
-        panelinformacion.add(ip, new AbsoluteConstraints(30, 5, 10, -1));
+        //TextField ip
+        ip = new JTextField("",20);
+        panelinformacion.add(ip, new AbsoluteConstraints(300, 20, 100, -1));
         
-        panelinformacion.add(x, new AbsoluteConstraints(15, 20, 40, -1));
-        panelinformacion.add(y, new AbsoluteConstraints(25, 50, 40, -1));
+        //label puerto
+        lblPuerto = new JLabel();
+        tipoLetra = lblPuerto.getFont();
+        lblPuerto.setText("Puerto contrincante:");
+        lblPuerto.setForeground(Color.WHITE);
+        lblPuerto.setFont(new Font(tipoLetra.getName(),Font.PLAIN,18));
+        panelinformacion.add(lblPuerto, new AbsoluteConstraints(165, 48, 220, -1));
+        
+        //TextField puerto
+        puerto = new JTextField("",20);
+        panelinformacion.add(puerto, new AbsoluteConstraints(330, 50, 70, -1));
+        
+        //TextField ip
+        ip = new JTextField("",20);
+        panelinformacion.add(ip, new AbsoluteConstraints(300, 20, 100, -1));
+        
+        //textBox
+        lblx = new JLabel();
+        tipoLetra = lblx.getFont();
+        lblx.setText("X");
+        lblx.setForeground(Color.WHITE);
+        lblx.setFont(new Font(tipoLetra.getName(),Font.PLAIN,18));
+        panelinformacion.add(lblx, new AbsoluteConstraints(25, 20, 40, -1));
+        panelinformacion.add(x, new AbsoluteConstraints(40, 50, 40, -1));
+        
+        lbly = new JLabel();
+        tipoLetra = lbly.getFont();
+        lbly.setText("Y");
+        lbly.setForeground(Color.WHITE);
+        lbly.setFont(new Font(tipoLetra.getName(),Font.PLAIN,18));
+        panelinformacion.add(lbly, new AbsoluteConstraints(25, 50, 40, -1));
+        panelinformacion.add(y, new AbsoluteConstraints(40, 20, 40, -1));
     }                      
 
     

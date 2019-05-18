@@ -29,7 +29,7 @@ public class Servidor extends Observable implements Runnable{
     
     private ServerSocket servidor = null;
     private Socket   enlaceCliente = null;
-    
+
     private int puerto;
     
     
@@ -40,6 +40,12 @@ public class Servidor extends Observable implements Runnable{
     public Servidor (int puerto){
         this.puerto = puerto;
     }
+
+
+    public Socket getEnlaceCliente() {
+        return enlaceCliente;
+    }
+    
     
     private  void IniciaServidor (){
         try {
@@ -57,9 +63,14 @@ public class Servidor extends Observable implements Runnable{
         }
     }
     
-    private  void cierraEnlaceCliente(){
+    public  void cierraEnlaceCliente(Socket enlaceCliente){
         try {
-            enlaceCliente.close();
+            if (enlaceCliente==null){
+                servidor.close();
+            } else {
+                enlaceCliente.close();
+                servidor.close();
+            }
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -82,15 +93,21 @@ public class Servidor extends Observable implements Runnable{
 
     @Override
     public void run() {
+        boolean nosalir = true;
         IniciaServidor();
-        
-        while (true){
+        while (nosalir){
+            
             AceptaCliente();
+            if (servidor!=null){
             Mensaje MensajeEntrante = esperaMensaje();
             
             this.setChanged();
             this.notifyObservers(MensajeEntrante);
-            this.clearChanged(); 
+            this.clearChanged();
+            } else {
+                nosalir = false;
+            }
+            
         }
     }
     

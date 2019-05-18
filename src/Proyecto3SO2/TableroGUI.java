@@ -96,15 +96,14 @@ public class TableroGUI extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setPreferredSize(new java.awt.Dimension(ladoTableroy+1, ladoTablerox+1));
         
-        if (equipo == 1 ){
-            Personaje.creaListadePersonajes1();
-            Personaje.creaEquipo(1);
-            ambienteGUI.setPanelInformacionEquipo(1);
+        if (equipo == AmbienteGUI.EQUIPOREMOTO ){
+            
+            // Debe dejar el tablero del equipo remoto vacio ya que se llanara en la maquina remota
                
         } else {
             Personaje.creaListadePersonajes2();
             Personaje.creaEquipo(2);
-            ambienteGUI.setPanelInformacionEquipo(2); 
+            
         }
     }           
     

@@ -143,13 +143,11 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
                         if (estaMarcada){
                             estaMarcada = false;
                             tablero.setCasillaOrigen(null);
-                            tablero.getAmbienteGUI().clearPanelInformacionPersonaje();
                         } else {
                             estaMarcada = true;
                             tablero.setCasillaOrigen(this);
                             tablero.setAccion(TableroGUI.SELECCIONARDESTINO);
                             this.setCasillaMarcada(casillaSeleccionada);
-                            tablero.getAmbienteGUI().setPanelInformacion(tablero.getTurnoDe(),this);
                         }
                 break;
             case TableroGUI.SELECCIONARDESTINO: 
@@ -177,7 +175,6 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
                               personaje.getVida()+ "% de vida");
                          }
                          
-                         tablero.getAmbienteGUI().setPanelInformacion(0,null);
                          
                          tablero.getCasillaOrigen().estaMarcada= false;
                          this.tablero.pintar(tablero.getCasillaOrigen().casillaMarcada[0],tablero.getCasillaOrigen().casillaMarcada[1],

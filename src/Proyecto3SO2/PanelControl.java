@@ -66,8 +66,8 @@ public class PanelControl extends JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-      // Creacion del Combo Box
-      String tempoX=Inicial.archivo.readPropertie("TamanoTableroX");
+      // Creacion del Combo Box de las posiciones X y Y
+        String tempoX=Inicial.archivo.readPropertie("TamanoTableroX");
         tamTabX =Integer.parseInt(tempoX );
         String tempoY=Inicial.archivo.readPropertie("TamanoTableroY");
         tamTabY = Integer.parseInt(tempoY);
@@ -89,25 +89,27 @@ public class PanelControl extends JPanel {
         //label ip
         lblip = new JLabel();
         Font tipoLetra = lblip.getFont();
-        lblip.setText("IP contrincante:");
+        lblip.setText("IP remoto:");
         lblip.setForeground(Color.WHITE);
         lblip.setFont(new Font(tipoLetra.getName(),Font.PLAIN,18));
         panelinformacion.add(lblip, new AbsoluteConstraints(165, 18, 220, -1));
         
         //TextField ip
         ip = new JTextField("",20);
+        ip.setText(Inicial.archivo.readPropertie("ip_contrincante"));
         panelinformacion.add(ip, new AbsoluteConstraints(300, 20, 100, -1));
         
         //label puerto
         lblPuerto = new JLabel();
         tipoLetra = lblPuerto.getFont();
-        lblPuerto.setText("Puerto contrincante:");
+        lblPuerto.setText("Puerto comunicación:");
         lblPuerto.setForeground(Color.WHITE);
         lblPuerto.setFont(new Font(tipoLetra.getName(),Font.PLAIN,18));
         panelinformacion.add(lblPuerto, new AbsoluteConstraints(165, 48, 220, -1));
         
         //TextField puerto
         puerto = new JTextField("",20);
+        puerto.setText(Inicial.archivo.readPropertie("puerto_comunicacion"));
         panelinformacion.add(puerto, new AbsoluteConstraints(330, 50, 70, -1));
         
         //TextField ip

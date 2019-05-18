@@ -40,6 +40,10 @@ public class AmbienteGUI extends JFrame implements Observer{
     
     public  String TAMANIOTABLEROX = Inicial.archivo.readPropertie("TamanoTableroX");
     public  String TAMANIOTABLEROY = Inicial.archivo.readPropertie("TamanoTableroY");
+    
+    public static final int EQUIPOREMOTO = 1;
+    public static final int EQUIPOLOCAL = 2;
+    
 
     private final JPanel PanelTitulares    = new JPanel();
     private final JPanel PanelPrincipal = new JPanel();
@@ -56,10 +60,7 @@ public class AmbienteGUI extends JFrame implements Observer{
     
     String IPContrincante ="";
     
-    @SuppressWarnings("FieldMayBeFinal")
-    private PanelInformacion panelEquipo1 = new PanelInformacion();
-    @SuppressWarnings("FieldMayBeFinal")
-    private   PanelInformacion panelEquipo2 = new PanelInformacion();
+   
 
     
     
@@ -131,35 +132,9 @@ public class AmbienteGUI extends JFrame implements Observer{
         
     }
   
-    public  void setPanelInformacion(int equipoActual,CasillasGUI casillaActual){
-        if (equipoActual==0){
-            panelEquipo1.actualizaInformacionEquipo(1);
-            panelEquipo2.actualizaInformacionEquipo(2);
-        }
-        else if (equipoActual == 1){
-            panelEquipo1.actualizaInformacion(equipoActual,casillaActual);
-            panelEquipo2.limpiaInformacionPersonaje();
-            panelEquipo1.actualizaInformacionEquipo(equipoActual);
-        }
-        else {
-            panelEquipo2.actualizaInformacion(equipoActual,casillaActual);
-            panelEquipo1.limpiaInformacionPersonaje();
-            panelEquipo2.actualizaInformacionEquipo(equipoActual);
-            
-        }
-    }
-    public void setPanelInformacionEquipo (int equipoActual){
-        if (equipoActual == 1){
-            panelEquipo1.creaespacioInformacionEquipo(equipoActual);
-        }
-        else {
-            panelEquipo2.creaespacioInformacionEquipo(equipoActual);
-        }
-    }
-    public  void clearPanelInformacionPersonaje(){
-        panelEquipo1.limpiaInformacionPersonaje();
-        panelEquipo2.limpiaInformacionPersonaje();
-    }
+
+
+
 
     @Override
     public void update(Observable o, Object arg) {

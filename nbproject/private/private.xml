@@ -7,30 +7,18 @@
         
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; a0c6fd4f726fe5c3d2ee57083316e20987d8b746
     
-        
         <group>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/AmbienteGUI.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/Player.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/PanelChat.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/CasillasGUI.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/TableroGUI.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/AmbienteGUI.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/Player.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/PanelChat.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/CasillasGUI.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/TableroGUI.java</file>
-        </group>
-<<<<<<< HEAD
-=======
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; a0c6fd4f726fe5c3d2ee57083316e20987d8b746
-    <group>
+            <file>file:/C:/Users/Ronal%20Perez/Documents/pruebas/Proyecto3SO2/src/Proyecto3SO2/PanelChat.java</file>
             <file>file:/C:/Users/Ronal%20Perez/Documents/pruebas/Proyecto3SO2/src/Proyecto3SO2/PanelControl.java</file>
             <file>file:/C:/Users/Ronal%20Perez/Documents/pruebas/Proyecto3SO2/src/Proyecto3SO2/AmbienteGUI.java</file>
             <file>file:/C:/Users/Ronal%20Perez/Documents/pruebas/Proyecto3SO2/src/Proyecto3SO2/ArchivoConfiguracion.java</file>
             <file>file:/C:/Users/Ronal%20Perez/Documents/pruebas/Proyecto3SO2/src/Proyecto3SO2/Inicial.java</file>
         </group>
->>>>>>> 12021304e6113714886f9093ef1f2838397a4722
+        <group>
+            <file>file:/C:/Users/Ronal%20Perez/Documents/pruebas/Proyecto3SO2/src/Proyecto3SO2/PanelChat.java</file>
+            <file>file:/C:/Users/Ronal%20Perez/Documents/pruebas/Proyecto3SO2/src/Proyecto3SO2/PanelControl.java</file>
+            <file>file:/C:/Users/Ronal%20Perez/Documents/pruebas/Proyecto3SO2/src/Proyecto3SO2/AmbienteGUI.java</file>
+            <file>file:/C:/Users/Ronal%20Perez/Documents/pruebas/Proyecto3SO2/src/Proyecto3SO2/Inicial.java</file>
+        </group>
     </open-files>
 </project-private>

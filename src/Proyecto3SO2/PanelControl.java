@@ -30,8 +30,9 @@ public class PanelControl extends JPanel {
     
     private JPanel panelinformacion;
     private JComboBox x,y;
-    private JLabel lblip, lblPuerto, lblx, lbly;
-    private JTextField ip, puerto;
+    private JLabel lblip, lblPuerto, lblx, lbly, lblNombre;
+    private JTextField ip, puerto, nombreJugador;
+    private JButton enlace;
     
     int tamTabX,tamTabY;
 
@@ -100,7 +101,7 @@ public class PanelControl extends JPanel {
         
         //label puerto
         lblPuerto = new JLabel();
-        tipoLetra = lblPuerto.getFont();
+        lblPuerto.getFont();
         lblPuerto.setText("Puerto contrincante:");
         lblPuerto.setForeground(Color.WHITE);
         lblPuerto.setFont(new Font(tipoLetra.getName(),Font.PLAIN,18));
@@ -116,7 +117,7 @@ public class PanelControl extends JPanel {
         
         //textBox
         lblx = new JLabel();
-        tipoLetra = lblx.getFont();
+        lblx.getFont();
         lblx.setText("X");
         lblx.setForeground(Color.WHITE);
         lblx.setFont(new Font(tipoLetra.getName(),Font.PLAIN,18));
@@ -124,12 +125,27 @@ public class PanelControl extends JPanel {
         panelinformacion.add(x, new AbsoluteConstraints(40, 50, 40, -1));
         
         lbly = new JLabel();
-        tipoLetra = lbly.getFont();
+        lbly.getFont();
         lbly.setText("Y");
         lbly.setForeground(Color.WHITE);
         lbly.setFont(new Font(tipoLetra.getName(),Font.PLAIN,18));
         panelinformacion.add(lbly, new AbsoluteConstraints(25, 50, 40, -1));
         panelinformacion.add(y, new AbsoluteConstraints(40, 20, 40, -1));
+        
+        //nombre del jugador
+        lblNombre = new JLabel();
+        lblNombre.getFont();
+        lblNombre.setText("Nombre jugador:");
+        lblNombre.setForeground(Color.WHITE);
+        lblNombre.setFont(new Font(tipoLetra.getName(),Font.PLAIN,18));
+        panelinformacion.add(lblNombre, new AbsoluteConstraints(448, 20, 200, -1));
+        nombreJugador = new JTextField("",20);
+        panelinformacion.add(nombreJugador, new AbsoluteConstraints(600, 23, 120, -1));
+        
+        //
+        enlace = new JButton();
+        panelinformacion.add(enlace, new AbsoluteConstraints(1207, 20, 90, -1));
+        enlace.setText("Conectar");
     }                      
 
     

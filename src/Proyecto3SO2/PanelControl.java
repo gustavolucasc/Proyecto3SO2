@@ -33,18 +33,29 @@ public class PanelControl extends JPanel {
     private JLabel lblip, lblPuerto, lblx, lbly, lblNombre;
     private JTextField ip, puerto, nombreJugador;
     private JButton enlace;
+    private AmbienteGUI ambiente;
     
     int tamTabX,tamTabY;
 
+    private Servidor s=null;
+    private Thread t=null;
+    
     private String[] tamTablero = {"5","6","7","8","9"};
     
-    public PanelControl(){
-        
+    public PanelControl(AmbienteGUI ambiente){
+        this.ambiente = ambiente;
         Component();
               
     }
     
-    
+    public String getIPRemoto (){
+        String ipString = ip.getText();
+        return (ipString);
+    }
+
+    public int getPuerto(){
+        return Integer.parseInt(puerto.getText());
+    }    
     @SuppressWarnings("empty-statement")
     public void Component() {
 
@@ -114,8 +125,8 @@ public class PanelControl extends JPanel {
         panelinformacion.add(puerto, new AbsoluteConstraints(330, 50, 70, -1));
         
         //TextField ip
-        ip = new JTextField("",20);
-        panelinformacion.add(ip, new AbsoluteConstraints(300, 20, 100, -1));
+        //ip = new JTextField("",20);
+        //panelinformacion.add(ip, new AbsoluteConstraints(300, 20, 100, -1));
         
         //textBox
         lblx = new JLabel();
@@ -148,6 +159,11 @@ public class PanelControl extends JPanel {
         enlace = new JButton();
         panelinformacion.add(enlace, new AbsoluteConstraints(1207, 20, 90, -1));
         enlace.setText("Conectar");
+         enlace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnlacePerformed(evt);
+            }
+        });
     }                      
 
     
@@ -168,5 +184,21 @@ public class PanelControl extends JPanel {
        Inicial.archivo.writePropertie("TamanoTableroY",(String) y.getSelectedItem());
    }
    
-    
+    private void jButtonEnlacePerformed(java.awt.event.ActionEvent evt) { 
+       
+       
+       
+       
+       if (enlace.getText()=="Conectar"){
+        s = new Servidor(getPuerto());
+        s.addObserver(ambiente);
+         t  = new Thread(s);
+        t.start(); 
+        enlace.setText("Desconectar");
+       } else {
+        s.cierraEnlaceCliente(s.getEnlaceCliente());
+        t.interrupt();
+        enlace.setText("Conectar");
+       }
+    }  
 }

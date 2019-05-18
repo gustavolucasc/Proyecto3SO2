@@ -35,16 +35,16 @@ public class PanelChat extends JPanel {
 
 
     private JButton btnEnviar;
-    private String ipDestino;
+    private AmbienteGUI ambiente;
   
    
 
     
-    public PanelChat(String ip){
+    public PanelChat(AmbienteGUI ambiente){
         
         Component();
         
-        this.ipDestino = ip;
+        this.ambiente = ambiente;
               
     }
 
@@ -107,13 +107,12 @@ public class PanelChat extends JPanel {
     private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {                                               
        String mensajetxt = fldMensaje.getText()+"\n";
        
-       fldHistorial.append(mensajetxt);
+       fldHistorial.append("Local: "+mensajetxt);
        
        Mensaje mensaje = new Mensaje(2,mensajetxt);
        
-       Cliente c = new Cliente(ipDestino,5000,mensaje);
-       Thread t  = new Thread(c);
-       t.start();
+       
+       ambiente.transmitirMensaje(mensaje);
        
     }    
           

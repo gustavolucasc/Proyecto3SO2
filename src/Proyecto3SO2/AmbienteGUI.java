@@ -70,10 +70,7 @@ public class AmbienteGUI extends JFrame implements Observer{
         setLayout(new FlowLayout());
         initComponents();
         
-        Servidor s = new Servidor(5000);
-        s.addObserver(this);
-        Thread t  = new Thread(s);
-        t.start();
+        
    
     }
     
@@ -98,8 +95,8 @@ public class AmbienteGUI extends JFrame implements Observer{
         
         
         panelTitulos= new PanelTitulos();
-        panelChat = new PanelChat(IPContrincante);
-        panelControl = new PanelControl();
+        panelChat = new PanelChat(this);
+        panelControl = new PanelControl(this);
         tableroGUI = new TableroGUI(Integer.parseInt(TAMANIOTABLEROX),Integer.parseInt(TAMANIOTABLEROY),1,this);
         tableroGUI2 = new TableroGUI(Integer.parseInt(TAMANIOTABLEROX),Integer.parseInt(TAMANIOTABLEROY),2,this);
          
@@ -132,7 +129,11 @@ public class AmbienteGUI extends JFrame implements Observer{
         
     }
   
-
+    public void transmitirMensaje (Mensaje m){
+       Cliente c = new Cliente(panelControl.getIPRemoto(),panelControl.getPuerto(),m);
+       Thread t  = new Thread(c);
+       t.start();
+    }
 
 
 
@@ -141,11 +142,13 @@ public class AmbienteGUI extends JFrame implements Observer{
         Mensaje mensaje = (Mensaje) arg;
         switch (mensaje.getTipo()){
             case 2: // tipo chat
-                panelChat.setFldHistorial(panelChat.getFldHistorial()+ mensaje.getMensaje());
+                panelChat.setFldHistorial(panelChat.getFldHistorial()+"Remoto: "+ mensaje.getMensaje());
                 break;
             default: 
                 break;
         }
+        
+        
     }
                 
    

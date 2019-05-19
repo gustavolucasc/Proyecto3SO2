@@ -10,18 +10,17 @@
         
         
         
-        <group>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/AmbienteGUI.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/CasillasGUI.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/TableroGUI.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/Personaje.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/PanelControlGUI.java</file>
-        </group>
+        
         <group>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/ParametrosGUI.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/AmbienteGUI.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/CasillasGUI.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/TableroGUI.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/Inicial.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/PanelControlGUI.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/AmbienteGUI.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/Inicial.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/PanelControlGUI.java</file>
         </group>

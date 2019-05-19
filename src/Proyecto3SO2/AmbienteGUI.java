@@ -53,23 +53,21 @@ public class AmbienteGUI extends JFrame implements Observer{
     public static final int EQUIPOLOCAL = 2;
     
 
-    private final JPanel PanelTitulares    = new JPanel();
+    
     private final JPanel PanelPrincipal1 = new JPanel();
     private final JPanel PanelPrincipal2 = new JPanel();
     private final JPanel PanelInformativo = new JPanel();
     private final JPanel PanelControles    = new JPanel();
     @SuppressWarnings("FieldMayBeFinal")
-    private PanelTitulosGUI panelTitulos;
-    @SuppressWarnings("FieldMayBeFinal")
-    private PanelChat panelChat;
-    @SuppressWarnings("FieldMayBeFinal")
-    private PanelControl panelControl;
-    private TableroGUI tableroGUI,tableroGUI2;
     
+    private PanelTitulo panelTitulos1;
+    private PanelTitulo panelTitulos2;
     
+    @SuppressWarnings("FieldMayBeFinal")
+    private PanelChatGUI panelChat;
+    @SuppressWarnings("FieldMayBeFinal")
 
-    
-   
+    private TableroGUI tableroGUI,tableroGUI2;
 
     
     
@@ -80,8 +78,7 @@ public class AmbienteGUI extends JFrame implements Observer{
         
         LeeArchivoConfiguracion ();
         initComponents();
-        
-        
+
    
     }
     
@@ -105,9 +102,11 @@ public class AmbienteGUI extends JFrame implements Observer{
 	setIconImage(miicono);
         
         
-        panelTitulos= new PanelTitulosGUI();
-        panelChat = new PanelChat(this);
-        panelControl = new PanelControl(this);
+        
+        panelChat = new PanelChatGUI(this);
+       
+        panelTitulos1 = new PanelTitulo();
+        panelTitulos2 = new PanelTitulo();
         tableroGUI = new TableroGUI(Integer.parseInt(TamanioTableroXLocal),Integer.parseInt(TamanioTableroYLocal),1,this);
         tableroGUI2 = new TableroGUI(Integer.parseInt(TamanioTableroXRemoto),Integer.parseInt(TamanioTableroYRemoto),2,this);
          
@@ -116,26 +115,30 @@ public class AmbienteGUI extends JFrame implements Observer{
         
         getContentPane().setLayout(layout);  
         
-        layout.setAlignment(FlowLayout.CENTER);
-             
+        
+        panelTitulos1.setBackground(new Color(254,0,0,0));     
+        panelTitulos2.setBackground(new Color(254,0,0,0));
         PanelPrincipal1.setBackground(new Color(0,0,0,150));
         PanelPrincipal2.setBackground(new Color(0,0,0,150));
         PanelInformativo.setBackground(new Color(254,0,0,0));
         PanelControles.setBackground(new Color(254,0,0,0));
-        PanelTitulares.setBackground(new Color(254,0,0,0));
         
-        getContentPane().add(PanelTitulares); 
+        PanelPrincipal1.setPreferredSize(new java.awt.Dimension(460,510));
+        PanelPrincipal2.setPreferredSize(new java.awt.Dimension(460,510));
+        
+        
         getContentPane().add(PanelPrincipal1);
         getContentPane().add(PanelPrincipal2);
         getContentPane().add(PanelInformativo);
-        getContentPane().add(PanelControles);
         
-        PanelTitulares.add(panelTitulos);
+        PanelPrincipal1.add(panelTitulos1);
         PanelPrincipal1.add(tableroGUI);
+        
+        PanelPrincipal2.add(panelTitulos2);
         PanelPrincipal2.add(tableroGUI2);
+        
         PanelInformativo.add(panelChat);
-        PanelControles.add(panelControl);
-       
+        
         pack();
         //setResizable(false);
         setLocationRelativeTo(null);
@@ -143,7 +146,7 @@ public class AmbienteGUI extends JFrame implements Observer{
     }
   
     public void transmitirMensaje (Mensaje m){
-       Cliente c = new Cliente(panelControl.getIPRemoto(),panelControl.getPuerto(),m);
+       Cliente c = new Cliente(panelControlGUI.getIPRemoto(),panelControlGUI.getPuerto(),m);
        Thread t  = new Thread(c);
        t.start();
     }

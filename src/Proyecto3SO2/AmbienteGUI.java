@@ -38,19 +38,28 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 public class AmbienteGUI extends JFrame implements Observer{
     
-    public  String TAMANIOTABLEROX = Inicial.archivo.readPropertie("TamanoTableroX");
-    public  String TAMANIOTABLEROY = Inicial.archivo.readPropertie("TamanoTableroY");
+    public  String TamanioTableroYLocal = "0";
+    public  String TamanioTableroXLocal = "0";
+    public  String TamanioTableroYRemoto = "0";
+    public  String TamanioTableroXRemoto = "0";
+    public  String IPContrincante ="";
+    public  String PuertoComunicacion = "";
+    public  String NombreLocal = "";
+    public  String NombreRemoto="";
+    public  String TipoPersonajeLocal = "";
+    public  String TipoPersonajeRemoto = "";
     
     public static final int EQUIPOREMOTO = 1;
     public static final int EQUIPOLOCAL = 2;
     
 
     private final JPanel PanelTitulares    = new JPanel();
-    private final JPanel PanelPrincipal = new JPanel();
+    private final JPanel PanelPrincipal1 = new JPanel();
+    private final JPanel PanelPrincipal2 = new JPanel();
     private final JPanel PanelInformativo = new JPanel();
     private final JPanel PanelControles    = new JPanel();
     @SuppressWarnings("FieldMayBeFinal")
-    private PanelTitulos panelTitulos;
+    private PanelTitulosGUI panelTitulos;
     @SuppressWarnings("FieldMayBeFinal")
     private PanelChat panelChat;
     @SuppressWarnings("FieldMayBeFinal")
@@ -58,7 +67,7 @@ public class AmbienteGUI extends JFrame implements Observer{
     private TableroGUI tableroGUI,tableroGUI2;
     
     
-    String IPContrincante ="";
+
     
    
 
@@ -68,6 +77,8 @@ public class AmbienteGUI extends JFrame implements Observer{
         
         setContentPane(new JLabel(new ImageIcon(AmbienteGUI.class.getResource("iconos/fondo.png"))));
         setLayout(new FlowLayout());
+        
+        LeeArchivoConfiguracion ();
         initComponents();
         
         
@@ -94,11 +105,11 @@ public class AmbienteGUI extends JFrame implements Observer{
 	setIconImage(miicono);
         
         
-        panelTitulos= new PanelTitulos();
+        panelTitulos= new PanelTitulosGUI();
         panelChat = new PanelChat(this);
         panelControl = new PanelControl(this);
-        tableroGUI = new TableroGUI(Integer.parseInt(TAMANIOTABLEROX),Integer.parseInt(TAMANIOTABLEROY),1,this);
-        tableroGUI2 = new TableroGUI(Integer.parseInt(TAMANIOTABLEROX),Integer.parseInt(TAMANIOTABLEROY),2,this);
+        tableroGUI = new TableroGUI(Integer.parseInt(TamanioTableroXLocal),Integer.parseInt(TamanioTableroYLocal),1,this);
+        tableroGUI2 = new TableroGUI(Integer.parseInt(TamanioTableroXRemoto),Integer.parseInt(TamanioTableroYRemoto),2,this);
          
                 
         FlowLayout layout = new FlowLayout();
@@ -107,19 +118,21 @@ public class AmbienteGUI extends JFrame implements Observer{
         
         layout.setAlignment(FlowLayout.CENTER);
              
-        PanelPrincipal.setBackground(new Color(0,0,0,150));
+        PanelPrincipal1.setBackground(new Color(0,0,0,150));
+        PanelPrincipal2.setBackground(new Color(0,0,0,150));
         PanelInformativo.setBackground(new Color(254,0,0,0));
         PanelControles.setBackground(new Color(254,0,0,0));
         PanelTitulares.setBackground(new Color(254,0,0,0));
         
         getContentPane().add(PanelTitulares); 
-        getContentPane().add(PanelPrincipal);
+        getContentPane().add(PanelPrincipal1);
+        getContentPane().add(PanelPrincipal2);
         getContentPane().add(PanelInformativo);
         getContentPane().add(PanelControles);
         
         PanelTitulares.add(panelTitulos);
-        PanelPrincipal.add(tableroGUI);
-        PanelPrincipal.add(tableroGUI2);
+        PanelPrincipal1.add(tableroGUI);
+        PanelPrincipal2.add(tableroGUI2);
         PanelInformativo.add(panelChat);
         PanelControles.add(panelControl);
        
@@ -135,7 +148,19 @@ public class AmbienteGUI extends JFrame implements Observer{
        t.start();
     }
 
-
+    private void LeeArchivoConfiguracion (){
+        IPContrincante=Inicial.archivo.readPropertie("ip_contrincante");
+        PuertoComunicacion=Inicial.archivo.readPropertie("puerto_comunicacion");
+        TamanioTableroYLocal=Inicial.archivo.readPropertie("TamanoTableroY");
+        TamanioTableroXLocal=Inicial.archivo.readPropertie("TamanoTableroX");
+        TipoPersonajeLocal=Inicial.archivo.readPropertie("TipoPersonaje");
+        NombreLocal=Inicial.archivo.readPropertie("NombreCapitan");
+        
+        // Eliminar cuando se tenga el paquete remoto de configuracion
+        TamanioTableroYRemoto=TamanioTableroXLocal;
+        TamanioTableroXRemoto=TamanioTableroXLocal;
+        TipoPersonajeRemoto=TipoPersonajeLocal;
+    }
 
     @Override
     public void update(Observable o, Object arg) {

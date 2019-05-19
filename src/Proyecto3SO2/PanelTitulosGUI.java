@@ -26,7 +26,7 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 
-public class PanelTitulos extends JPanel {
+public class PanelTitulosGUI extends JPanel {
     
     private JPanel panelinformacion;
     private JLabel lblNombre1, lblAccion1,lblPunteo1;
@@ -35,7 +35,7 @@ public class PanelTitulos extends JPanel {
     
     
     
-    public PanelTitulos(){
+    public PanelTitulosGUI(){
         
         Component();
               

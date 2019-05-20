@@ -146,7 +146,7 @@ public class AmbienteGUI extends JFrame implements Observer{
     }
   
     public void transmitirMensaje (Mensaje m){
-       Cliente c = new Cliente(panelControlGUI.getIPRemoto(),panelControlGUI.getPuerto(),m);
+       Cliente c = new Cliente(IPContrincante,Integer.parseInt(PuertoComunicacion),m);
        Thread t  = new Thread(c);
        t.start();
     }

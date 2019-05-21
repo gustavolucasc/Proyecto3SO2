@@ -45,11 +45,11 @@ public class EsperandoGUI extends JFrame  implements Observer {
         threadServidor = new Thread(servidor);
         threadServidor.start();
         
-        while (true){
+        
         Cliente cliente = new Cliente(IPContrincante, PuertoComunicacion, creaMensajeInicial());
         Thread threadCleinte = new Thread(cliente);
         threadCleinte.start();
-        }
+
         
     }
     

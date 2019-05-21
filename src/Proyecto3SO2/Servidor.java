@@ -75,11 +75,11 @@ public class Servidor extends Observable implements Runnable{
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private Mensaje esperaMensaje (){
-        Mensaje respuesta = null;
+    private Object esperaMensaje (){
+        Object respuesta = null;
         try {
             entrada = new ObjectInputStream(enlaceCliente.getInputStream());
-            respuesta = (Mensaje) entrada.readObject();
+            respuesta =  entrada.readObject();
             
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,7 +99,7 @@ public class Servidor extends Observable implements Runnable{
             
             AceptaCliente();
             if (servidor!=null){
-            Mensaje MensajeEntrante = esperaMensaje();
+            Object MensajeEntrante = esperaMensaje();
             
             this.setChanged();
             this.notifyObservers(MensajeEntrante);

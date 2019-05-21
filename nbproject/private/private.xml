@@ -16,12 +16,11 @@
         
         
         
-        <group>
-            <file>file:/C:/Users/Ronal%20Perez/Documents/pruebas/Proyecto3SO2/src/Proyecto3SO2/EsperandoGUI.java</file>
-            <file>file:/C:/Users/Ronal%20Perez/Documents/pruebas/Proyecto3SO2/src/Proyecto3SO2/ParametrosGUI.java</file>
-        </group>
+        
+        
         <group>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/ParametrosGUI.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/Servidor.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/MensajeInicial.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/AmbienteGUI.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/Mensaje.java</file>
@@ -29,7 +28,11 @@
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/TableroGUI.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/Inicial.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/PanelControlGUI.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/EsperandoGUI.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/PanelChatGUI.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Proyecto3SO2/src/Proyecto3SO2/Cliente.java</file>
         </group>
     </open-files>
 </project-private>

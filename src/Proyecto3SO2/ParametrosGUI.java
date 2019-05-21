@@ -52,7 +52,7 @@ public class ParametrosGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         IPRemota = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        PuertoComunicacion = new javax.swing.JTextField();
+        PuertoEntrante = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -64,6 +64,8 @@ public class ParametrosGUI extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         NombreJugador = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        PuertoSaliente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,8 +84,14 @@ public class ParametrosGUI extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Puerto Comunicación");
+        jLabel2.setText("Puerto Entrante");
         jLabel2.setOpaque(true);
+
+        PuertoEntrante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PuertoEntranteActionPerformed(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,6 +147,17 @@ public class ParametrosGUI extends javax.swing.JFrame {
         jLabel9.setText("Nombre del Capitan");
         jLabel9.setOpaque(true);
 
+        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Puerto Saliente");
+        jLabel10.setOpaque(true);
+
+        PuertoSaliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PuertoSalienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,7 +174,7 @@ public class ParametrosGUI extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(18, 18, 18)
-                                    .addComponent(PuertoComunicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(PuertoEntrante, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addGap(18, 18, 18)
@@ -171,7 +190,11 @@ public class ParametrosGUI extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addGap(18, 18, 18)
-                                    .addComponent(IPRemota, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(IPRemota, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel10)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(PuertoSaliente, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(24, 24, 24)
@@ -193,8 +216,12 @@ public class ParametrosGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(PuertoComunicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PuertoEntrante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(PuertoSaliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -214,7 +241,7 @@ public class ParametrosGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addGap(69, 69, 69)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(73, 73, 73))
         );
@@ -240,6 +267,14 @@ public class ParametrosGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ColumnasActionPerformed
 
+    private void PuertoEntranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuertoEntranteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PuertoEntranteActionPerformed
+
+    private void PuertoSalienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuertoSalienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PuertoSalienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -249,13 +284,15 @@ public class ParametrosGUI extends javax.swing.JFrame {
         Inicial.archivoParam.writePropertie("TipoPersonaje",(String) TipoPersonaje.getSelectedItem());
         
         Inicial.archivoParam.writePropertie("ip_contrincante",(String) IPRemota.getText());
-        Inicial.archivoParam.writePropertie("puerto_comunicacion",(String) PuertoComunicacion.getText());
+        Inicial.archivoParam.writePropertie("PuertoEntrante",(String) PuertoEntrante.getText());
+        Inicial.archivoParam.writePropertie("PuertoSaliente",(String) PuertoSaliente.getText());
         Inicial.archivoParam.writePropertie("NombreCapitan",(String) NombreJugador.getText());
         
     }
     private void LeeArchivoConfiguracion (){
         IPRemota.setText(Inicial.archivoParam.readPropertie("ip_contrincante"));
-        PuertoComunicacion.setText(Inicial.archivoParam.readPropertie("puerto_comunicacion"));
+        PuertoEntrante.setText(Inicial.archivoParam.readPropertie("PuertoEntrante"));
+        PuertoSaliente.setText(Inicial.archivoParam.readPropertie("PuertoSaliente"));
         Filas.setSelectedItem(Inicial.archivoParam.readPropertie("TamanoTableroY"));
         Columnas.setSelectedItem(Inicial.archivoParam.readPropertie("TamanoTableroX"));
         TipoPersonaje.setSelectedItem(Inicial.archivoParam.readPropertie("TipoPersonaje"));
@@ -266,10 +303,12 @@ public class ParametrosGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Filas;
     private javax.swing.JTextField IPRemota;
     private javax.swing.JTextField NombreJugador;
-    private javax.swing.JTextField PuertoComunicacion;
+    private javax.swing.JTextField PuertoEntrante;
+    private javax.swing.JTextField PuertoSaliente;
     private javax.swing.JComboBox<String> TipoPersonaje;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

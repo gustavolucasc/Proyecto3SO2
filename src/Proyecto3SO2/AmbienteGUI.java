@@ -95,8 +95,8 @@ public class AmbienteGUI extends JFrame implements Observer{
        
         panelTitulos1 = new PanelTituloGUI();
         panelTitulos2 = new PanelTituloGUI();
-        tableroGUI = new TableroGUI(TamanioTableroXLocal,TamanioTableroYLocal,1,this);
-        tableroGUI2 = new TableroGUI(TamanioTableroXRemoto,TamanioTableroYRemoto,2,this);
+        tableroGUI = new TableroGUI(TamanioTableroXRemoto,TamanioTableroYRemoto,1,this);
+        tableroGUI2 = new TableroGUI(TamanioTableroXLocal,TamanioTableroYLocal,2,this);
          
                 
         FlowLayout layout = new FlowLayout();
@@ -134,7 +134,7 @@ public class AmbienteGUI extends JFrame implements Observer{
     }
   
     public void transmitirMensaje (Mensaje m){
-       Cliente c = new Cliente(IPContrincante,PuertoComunicacion,m);
+       Cliente c = new Cliente(IPContrincante,PuertoSaliente,m);
        Thread t  = new Thread(c);
        t.start();
     }

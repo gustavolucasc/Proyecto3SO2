@@ -27,11 +27,13 @@ public class Inicial {
     public static Thread   threadServidor=null;
     
     public static MensajeInicial mensajeInicial;
+    public static boolean  mensajeInicialEnviado=false;
     
     public static int TamanioTableroYLocal = 0;
     public static int TamanioTableroXLocal = 0;
     public static String IPContrincante ="";
-    public static int PuertoComunicacion = 0;
+    public static int PuertoEntrante = 0;
+    public static int PuertoSaliente = 0;
     public static String NombreLocal = "";
     public static int TipoPersonajeLocal = 0;
     public static int TipoPersonajeRemoto = 0;
@@ -99,7 +101,8 @@ public class Inicial {
 
     public static void LeeArchivoConfiguracion (){
         IPContrincante=archivoParam.readPropertie("ip_contrincante");
-        PuertoComunicacion=Integer.parseInt(archivoParam.readPropertie("puerto_comunicacion"));
+        PuertoEntrante=Integer.parseInt(archivoParam.readPropertie("PuertoEntrante"));
+        PuertoSaliente=Integer.parseInt(archivoParam.readPropertie("PuertoSaliente"));
         TamanioTableroYLocal=Integer.parseInt(archivoParam.readPropertie("TamanoTableroX"));
         TamanioTableroXLocal=Integer.parseInt(archivoParam.readPropertie("TamanoTableroY"));
         TipoPersonajeLocal="Barcos".equals(archivoParam.readPropertie("TipoPersonaje"))?1:2;

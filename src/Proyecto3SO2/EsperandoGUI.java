@@ -40,13 +40,13 @@ public class EsperandoGUI extends JFrame  implements Observer {
         initComponents();
         LeeArchivoConfiguracion();
         
-        servidor = new Servidor(PuertoComunicacion); 
+        servidor = new Servidor(PuertoEntrante); 
         servidor.addObserver(this);
         threadServidor = new Thread(servidor);
         threadServidor.start();
         
         
-        Cliente cliente = new Cliente(IPContrincante, PuertoComunicacion, creaMensajeInicial());
+        Cliente cliente = new Cliente(IPContrincante, PuertoSaliente, creaMensajeInicial());
         Thread threadCleinte = new Thread(cliente);
         threadCleinte.start();
 
@@ -83,6 +83,7 @@ public class EsperandoGUI extends JFrame  implements Observer {
 
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        Inicio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,6 +100,14 @@ public class EsperandoGUI extends JFrame  implements Observer {
             }
         });
 
+        Inicio.setText("Iniciar Juego");
+        Inicio.setEnabled(false);
+        Inicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InicioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,8 +118,10 @@ public class EsperandoGUI extends JFrame  implements Observer {
                         .addGap(58, 58, 58)
                         .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(150, 150, 150)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Inicio)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -118,9 +129,11 @@ public class EsperandoGUI extends JFrame  implements Observer {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addGap(29, 29, 29)
+                .addGap(27, 27, 27)
                 .addComponent(jButton2)
-                .addGap(73, 73, 73))
+                .addGap(26, 26, 26)
+                .addComponent(Inicio)
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -133,10 +146,16 @@ public class EsperandoGUI extends JFrame  implements Observer {
        
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
+        // TODO add your handling code here:
+         levantaAmbienteGUI();
+    }//GEN-LAST:event_InicioActionPerformed
+
   
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Inicio;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
@@ -154,8 +173,9 @@ public class EsperandoGUI extends JFrame  implements Observer {
     NombreRemoto=mensaje.getNombre();    
     TamanioTableroYRemoto = mensaje.getFilas();
     TamanioTableroXRemoto = mensaje.getColumnas();
-    levantaAmbienteGUI();
-        
+    
+    Inicio.setEnabled(true);
+      levantaAmbienteGUI();   
     }
 }
 

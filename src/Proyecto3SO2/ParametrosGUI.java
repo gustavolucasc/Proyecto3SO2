@@ -233,6 +233,10 @@ public class ParametrosGUI extends javax.swing.JFrame {
                 ventana.setResizable(false);
             }
         });
+       
+       
+       EsperandoGUI esperando = new EsperandoGUI();
+       esperando.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void FilasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilasActionPerformed

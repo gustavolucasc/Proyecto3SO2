@@ -247,22 +247,22 @@ public class ParametrosGUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     private void EscribirArchivoConfiguracion(){
-        Inicial.archivo.writePropertie("TamanoTableroX",(String) Columnas.getSelectedItem());
-        Inicial.archivo.writePropertie("TamanoTableroY",(String) Filas.getSelectedItem());
-        Inicial.archivo.writePropertie("TipoPersonaje",(String) TipoPersonaje.getSelectedItem());
+        Inicial.archivoParam.writePropertie("TamanoTableroX",(String) Columnas.getSelectedItem());
+        Inicial.archivoParam.writePropertie("TamanoTableroY",(String) Filas.getSelectedItem());
+        Inicial.archivoParam.writePropertie("TipoPersonaje",(String) TipoPersonaje.getSelectedItem());
         
-        Inicial.archivo.writePropertie("ip_contrincante",(String) IPRemota.getText());
-        Inicial.archivo.writePropertie("puerto_comunicacion",(String) PuertoComunicacion.getText());
-        Inicial.archivo.writePropertie("NombreCapitan",(String) NombreJugador.getText());
+        Inicial.archivoParam.writePropertie("ip_contrincante",(String) IPRemota.getText());
+        Inicial.archivoParam.writePropertie("puerto_comunicacion",(String) PuertoComunicacion.getText());
+        Inicial.archivoParam.writePropertie("NombreCapitan",(String) NombreJugador.getText());
         
     }
     private void LeeArchivoConfiguracion (){
-        IPRemota.setText(Inicial.archivo.readPropertie("ip_contrincante"));
-        PuertoComunicacion.setText(Inicial.archivo.readPropertie("puerto_comunicacion"));
-        Filas.setSelectedItem(Inicial.archivo.readPropertie("TamanoTableroY"));
-        Columnas.setSelectedItem(Inicial.archivo.readPropertie("TamanoTableroX"));
-        TipoPersonaje.setSelectedItem(Inicial.archivo.readPropertie("TipoPersonaje"));
-        NombreJugador.setText(Inicial.archivo.readPropertie("NombreCapitan"));
+        IPRemota.setText(Inicial.archivoParam.readPropertie("ip_contrincante"));
+        PuertoComunicacion.setText(Inicial.archivoParam.readPropertie("puerto_comunicacion"));
+        Filas.setSelectedItem(Inicial.archivoParam.readPropertie("TamanoTableroY"));
+        Columnas.setSelectedItem(Inicial.archivoParam.readPropertie("TamanoTableroX"));
+        TipoPersonaje.setSelectedItem(Inicial.archivoParam.readPropertie("TipoPersonaje"));
+        NombreJugador.setText(Inicial.archivoParam.readPropertie("NombreCapitan"));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Columnas;

@@ -16,12 +16,12 @@ package Proyecto3SO2;
  * @author glucas & rperez
  */
 
-public class PanelTitulo extends javax.swing.JPanel {
+public class PanelTituloGUI extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelTitulo
      */
-    public PanelTitulo() {
+    public PanelTituloGUI() {
         initComponents();
     }
 

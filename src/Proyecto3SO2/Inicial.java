@@ -19,9 +19,27 @@ import javax.swing.JFrame;
 public class Inicial {
 
     
-    public static ArchivoConfiguracion archivo; 
+    public static ArchivoConfiguracion archivoParam; 
     public static AmbienteGUI ventana;
-    public static boolean abrirAmbienteGUI =false;    
+    public static boolean abrirAmbienteGUI =false;   
+    
+    public Servidor servidor=null;
+    public Thread   treadServidor=null;
+    
+    public static MensajeInicial mensajeInicial;
+    
+    public static int TamanioTableroYLocal = 0;
+    public static int TamanioTableroXLocal = 0;
+    public static int TamanioTableroYRemoto = 0;
+    public static int TamanioTableroXRemoto = 0;
+    public static String IPContrincante ="";
+    public static String PuertoComunicacion = "";
+    public static String NombreLocal = "";
+    public static String NombreRemoto="";
+    public static int TipoPersonajeLocal = 0;
+    public static int TipoPersonajeRemoto = 0;
+    
+    
     
     /**
      * @param args the command line arguments
@@ -43,7 +61,8 @@ public class Inicial {
     }*/
     
     public static void main(String args[]) {
-        archivo = new ArchivoConfiguracion();
+        
+        archivoParam = new ArchivoConfiguracion();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -81,9 +81,9 @@ public class PanelControlGUI extends JPanel {
         );
 
       // Creacion del Combo Box de las posiciones X y Y
-        String tempoX=Inicial.archivo.readPropertie("TamanoTableroX");
+        String tempoX=Inicial.archivoParam.readPropertie("TamanoTableroX");
         tamTabX =Integer.parseInt(tempoX );
-        String tempoY=Inicial.archivo.readPropertie("TamanoTableroY");
+        String tempoY=Inicial.archivoParam.readPropertie("TamanoTableroY");
         tamTabY = Integer.parseInt(tempoY);
         x = new JComboBox(TAMTABLERO);
         y = new JComboBox(TAMTABLERO);
@@ -101,7 +101,7 @@ public class PanelControlGUI extends JPanel {
         });
         
         // Seleccion de Personaje
-        String tempoPersonaje=Inicial.archivo.readPropertie("TipoPersonaje");
+        String tempoPersonaje=Inicial.archivoParam.readPropertie("TipoPersonaje");
         seleccionaPersonaje = new JComboBox(TIPOPERSONAJES);
         seleccionaPersonaje.setSelectedItem(tempoPersonaje);
         
@@ -119,7 +119,7 @@ public class PanelControlGUI extends JPanel {
         
         //TextField ip
         ip = new JTextField("",20);
-        ip.setText(Inicial.archivo.readPropertie("ip_contrincante"));
+        ip.setText(Inicial.archivoParam.readPropertie("ip_contrincante"));
         panelinformacion.add(ip, new AbsoluteConstraints(300, 20, 100, -1));
         
         //label puerto
@@ -132,7 +132,7 @@ public class PanelControlGUI extends JPanel {
         
         //TextField puerto
         puerto = new JTextField("",20);
-        puerto.setText(Inicial.archivo.readPropertie("puerto_comunicacion"));
+        puerto.setText(Inicial.archivoParam.readPropertie("puerto_comunicacion"));
         panelinformacion.add(puerto, new AbsoluteConstraints(330, 50, 70, -1));
         
         //TextField ip
@@ -191,8 +191,8 @@ public class PanelControlGUI extends JPanel {
   
     }    
    private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt){
-       Inicial.archivo.writePropertie("TamanoTableroX",(String) x.getSelectedItem());
-       Inicial.archivo.writePropertie("TamanoTableroY",(String) y.getSelectedItem());
+       Inicial.archivoParam.writePropertie("TamanoTableroX",(String) x.getSelectedItem());
+       Inicial.archivoParam.writePropertie("TamanoTableroY",(String) y.getSelectedItem());
    }
    
     private void jButtonEnlacePerformed(java.awt.event.ActionEvent evt) { 

@@ -11,25 +11,19 @@
  */
 package Proyecto3SO2;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import static java.awt.Color.RED;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.BorderFactory;
-import static javax.swing.BorderFactory.createLineBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
+import static Proyecto3SO2.Inicial.*;
 /**
  *
  * @author glucas & rperez
@@ -38,16 +32,7 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 public class AmbienteGUI extends JFrame implements Observer{
     
-    public  String TamanioTableroYLocal = "0";
-    public  String TamanioTableroXLocal = "0";
-    public  String TamanioTableroYRemoto = "0";
-    public  String TamanioTableroXRemoto = "0";
-    public  String IPContrincante ="";
-    public  String PuertoComunicacion = "";
-    public  String NombreLocal = "";
-    public  String NombreRemoto="";
-    public  String TipoPersonajeLocal = "";
-    public  String TipoPersonajeRemoto = "";
+    
     
     public static final int EQUIPOREMOTO = 1;
     public static final int EQUIPOLOCAL = 2;
@@ -60,8 +45,8 @@ public class AmbienteGUI extends JFrame implements Observer{
     private final JPanel PanelControles    = new JPanel();
     @SuppressWarnings("FieldMayBeFinal")
     
-    private PanelTitulo panelTitulos1;
-    private PanelTitulo panelTitulos2;
+    private PanelTituloGUI panelTitulos1;
+    private PanelTituloGUI panelTitulos2;
     
     @SuppressWarnings("FieldMayBeFinal")
     private PanelChatGUI panelChat;
@@ -90,7 +75,7 @@ public class AmbienteGUI extends JFrame implements Observer{
     
     private void initComponents() {
         
-        IPContrincante= Inicial.archivo.readPropertie("ip_contrincante");
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         
@@ -98,17 +83,17 @@ public class AmbienteGUI extends JFrame implements Observer{
 	setTitle("Proyecto 3 Sistemas Operativos 2");
     
         // Setea el icono de la ventana
-        Image miicono = mipantalla.getImage("src/Proyecto3SO2/iconos/nuevos/XYZ.png");
+        Image miicono = mipantalla.getImage("iconos/logo.png");
 	setIconImage(miicono);
         
         
         
         panelChat = new PanelChatGUI(this);
        
-        panelTitulos1 = new PanelTitulo();
-        panelTitulos2 = new PanelTitulo();
-        tableroGUI = new TableroGUI(Integer.parseInt(TamanioTableroXLocal),Integer.parseInt(TamanioTableroYLocal),1,this);
-        tableroGUI2 = new TableroGUI(Integer.parseInt(TamanioTableroXRemoto),Integer.parseInt(TamanioTableroYRemoto),2,this);
+        panelTitulos1 = new PanelTituloGUI();
+        panelTitulos2 = new PanelTituloGUI();
+        tableroGUI = new TableroGUI(TamanioTableroXLocal,TamanioTableroYLocal,1,this);
+        tableroGUI2 = new TableroGUI(TamanioTableroXRemoto,TamanioTableroYRemoto,2,this);
          
                 
         FlowLayout layout = new FlowLayout();
@@ -152,15 +137,15 @@ public class AmbienteGUI extends JFrame implements Observer{
     }
 
     private void LeeArchivoConfiguracion (){
-        IPContrincante=Inicial.archivo.readPropertie("ip_contrincante");
-        PuertoComunicacion=Inicial.archivo.readPropertie("puerto_comunicacion");
-        TamanioTableroYLocal=Inicial.archivo.readPropertie("TamanoTableroY");
-        TamanioTableroXLocal=Inicial.archivo.readPropertie("TamanoTableroX");
-        TipoPersonajeLocal=Inicial.archivo.readPropertie("TipoPersonaje");
-        NombreLocal=Inicial.archivo.readPropertie("NombreCapitan");
+        IPContrincante=archivoParam.readPropertie("ip_contrincante");
+        PuertoComunicacion=archivoParam.readPropertie("puerto_comunicacion");
+        TamanioTableroYLocal=Integer.parseInt(archivoParam.readPropertie("TamanoTableroX"));
+        TamanioTableroXLocal=Integer.parseInt(archivoParam.readPropertie("TamanoTableroY"));
+        TipoPersonajeLocal="Barcos".equals(archivoParam.readPropertie("TipoPersonaje"))?1:2;
+        NombreLocal=archivoParam.readPropertie("NombreCapitan");
         
         // Eliminar cuando se tenga el paquete remoto de configuracion
-        TamanioTableroYRemoto=TamanioTableroXLocal;
+        TamanioTableroYRemoto= mensajeInicial.getFilas();
         TamanioTableroXRemoto=TamanioTableroXLocal;
         TipoPersonajeRemoto=TipoPersonajeLocal;
     }

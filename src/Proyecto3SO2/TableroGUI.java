@@ -166,8 +166,8 @@ public class TableroGUI extends javax.swing.JPanel {
     }
     
     private void cargarImagenes() {
-        this.nomarcado = this.cargarFondo("iconos/suelo1.png");
-        this.marcado = this.cargarFondo("iconos/marcado.gif");
+        this.nomarcado = this.cargarFondo("iconos/suelo.png");
+        
     }
     private ImageIcon cargarImagenes(String nomImagen) {
         return this.cargarFondo(nomImagen);

@@ -64,7 +64,10 @@ public class AmbienteGUI extends JFrame implements Observer{
         LeeArchivoConfiguracion ();
         initComponents();
 
-   
+        servidor.deleteObservers();
+        servidor.addObserver(this);
+        
+
     }
     
       @Override
@@ -131,24 +134,12 @@ public class AmbienteGUI extends JFrame implements Observer{
     }
   
     public void transmitirMensaje (Mensaje m){
-       Cliente c = new Cliente(IPContrincante,Integer.parseInt(PuertoComunicacion),m);
+       Cliente c = new Cliente(IPContrincante,PuertoComunicacion,m);
        Thread t  = new Thread(c);
        t.start();
     }
 
-    private void LeeArchivoConfiguracion (){
-        IPContrincante=archivoParam.readPropertie("ip_contrincante");
-        PuertoComunicacion=archivoParam.readPropertie("puerto_comunicacion");
-        TamanioTableroYLocal=Integer.parseInt(archivoParam.readPropertie("TamanoTableroX"));
-        TamanioTableroXLocal=Integer.parseInt(archivoParam.readPropertie("TamanoTableroY"));
-        TipoPersonajeLocal="Barcos".equals(archivoParam.readPropertie("TipoPersonaje"))?1:2;
-        NombreLocal=archivoParam.readPropertie("NombreCapitan");
-        
-        // Eliminar cuando se tenga el paquete remoto de configuracion
-        TamanioTableroYRemoto= mensajeInicial.getFilas();
-        TamanioTableroXRemoto=TamanioTableroXLocal;
-        TipoPersonajeRemoto=TipoPersonajeLocal;
-    }
+    
 
     @Override
     public void update(Observable o, Object arg) {

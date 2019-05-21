@@ -30,10 +30,10 @@ public class Cliente implements Runnable {
    
     private ObjectOutputStream salida;
     
-    private Mensaje mensaje;
+    private Object mensaje;
 
     
-    public Cliente (String ipServidor, int puerto,Mensaje mensaje){
+    public Cliente (String ipServidor, int puerto,Object mensaje){
         this.mensaje = mensaje;
         try {
             enlaceServidor = new Socket(ipServidor,puerto);
@@ -52,8 +52,8 @@ public class Cliente implements Runnable {
     }
    
     
-    public void  enviarMensaje (Mensaje mensajeSaliente){
-        Mensaje respuesta = null;
+    public void  enviarMensaje (Object mensajeSaliente){
+        
         try {
             salida = new ObjectOutputStream(enlaceServidor.getOutputStream());
             salida.writeObject(mensajeSaliente);
@@ -62,7 +62,7 @@ public class Cliente implements Runnable {
         }
         
     }
-
+    
     @Override
     public void run() {
      

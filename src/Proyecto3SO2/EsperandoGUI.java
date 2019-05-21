@@ -17,22 +17,58 @@ package Proyecto3SO2;
  */
 
 
-import static Proyecto3SO2.Inicial.ventana;
+import static Proyecto3SO2.Inicial.*;
+
+import com.sun.jmx.snmp.tasks.ThreadService;
+import static java.lang.System.exit;
+import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
+import java.util.Observer;
 
 
-public class EsperandoGUI extends javax.swing.JFrame {
+public class EsperandoGUI extends JFrame  implements Observer {
 
-    static JProgressBar b;
+ 
     
     public EsperandoGUI() {
         setContentPane(new JLabel(new ImageIcon(AmbienteGUI.class.getResource("iconos/fondo3.png"))));
         initComponents();
+        LeeArchivoConfiguracion();
+        
+        servidor = new Servidor(PuertoComunicacion); 
+        servidor.addObserver(this);
+        threadServidor = new Thread(servidor);
+        threadServidor.start();
+        
+        while (true){
+        Cliente cliente = new Cliente(IPContrincante, PuertoComunicacion, creaMensajeInicial());
+        Thread threadCleinte = new Thread(cliente);
+        threadCleinte.start();
+        }
+        
+    }
+    
+    private MensajeInicial creaMensajeInicial(){
+        MensajeInicial respuesta = new MensajeInicial(NombreLocal,TamanioTableroXLocal,TamanioTableroYLocal,
+                                   TipoPersonajeLocal);
+        return respuesta;
+    }
+    
+    private void levantaAmbienteGUI(){
+            dispose();
+            java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                ventana= new AmbienteGUI();
+                ventana.setVisible(true);
+                ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);   
+                ventana.setResizable(false);
+            }
+        });
     }
     
     
@@ -47,19 +83,21 @@ public class EsperandoGUI extends javax.swing.JFrame {
 
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Esperando al oponente");
         jLabel6.setOpaque(true);
 
         jButton2.setText("Cancelar");
-
-        jButton3.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,36 +106,56 @@ public class EsperandoGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
+                        .addGap(58, 58, 58)
                         .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                        .addGap(148, 148, 148)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                .addGap(29, 29, 29)
+                .addComponent(jButton2)
                 .addGap(73, 73, 73))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+       dispose();
+       exit(0);
+       
+    }//GEN-LAST:event_jButton2ActionPerformed
+
   
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+       
+
+        MensajeInicial mensaje = (MensajeInicial) arg;
+        
+    TipoPersonajeRemoto = mensaje.getTipoEquipo();
+    NombreRemoto=mensaje.getNombre();    
+    TamanioTableroYRemoto = mensaje.getFilas();
+    TamanioTableroXRemoto = mensaje.getColumnas();
+    levantaAmbienteGUI();
+        
+    }
 }
+

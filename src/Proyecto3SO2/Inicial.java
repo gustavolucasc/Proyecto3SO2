@@ -23,21 +23,21 @@ public class Inicial {
     public static AmbienteGUI ventana;
     public static boolean abrirAmbienteGUI =false;   
     
-    public Servidor servidor=null;
-    public Thread   treadServidor=null;
+    public static Servidor servidor=null;
+    public static Thread   threadServidor=null;
     
     public static MensajeInicial mensajeInicial;
     
     public static int TamanioTableroYLocal = 0;
     public static int TamanioTableroXLocal = 0;
-    public static int TamanioTableroYRemoto = 0;
-    public static int TamanioTableroXRemoto = 0;
     public static String IPContrincante ="";
-    public static String PuertoComunicacion = "";
+    public static int PuertoComunicacion = 0;
     public static String NombreLocal = "";
-    public static String NombreRemoto="";
     public static int TipoPersonajeLocal = 0;
     public static int TipoPersonajeRemoto = 0;
+    public static String NombreRemoto="";    
+    public static int TamanioTableroYRemoto = 0;
+    public static int TamanioTableroXRemoto = 0;
     
     
     
@@ -97,6 +97,19 @@ public class Inicial {
         
     }
 
+    public static void LeeArchivoConfiguracion (){
+        IPContrincante=archivoParam.readPropertie("ip_contrincante");
+        PuertoComunicacion=Integer.parseInt(archivoParam.readPropertie("puerto_comunicacion"));
+        TamanioTableroYLocal=Integer.parseInt(archivoParam.readPropertie("TamanoTableroX"));
+        TamanioTableroXLocal=Integer.parseInt(archivoParam.readPropertie("TamanoTableroY"));
+        TipoPersonajeLocal="Barcos".equals(archivoParam.readPropertie("TipoPersonaje"))?1:2;
+        NombreLocal=archivoParam.readPropertie("NombreCapitan");
+        
+        // Eliminar cuando se tenga el paquete remoto de configuracion
+        TamanioTableroYRemoto= TamanioTableroXLocal;//mensajeInicial.getFilas();
+        TamanioTableroXRemoto=TamanioTableroXLocal;
+        TipoPersonajeRemoto=TipoPersonajeLocal;
+    }
     
     
 }

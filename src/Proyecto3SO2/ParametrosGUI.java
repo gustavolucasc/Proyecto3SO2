@@ -225,14 +225,7 @@ public class ParametrosGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        EscribirArchivoConfiguracion(); 
        dispose();//Inicial.abrirAmbienteGUI = true;
-       java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                ventana= new AmbienteGUI();
-                ventana.setVisible(true);
-                ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);   
-                ventana.setResizable(false);
-            }
-        });
+
        
        
        EsperandoGUI esperando = new EsperandoGUI();

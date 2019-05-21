@@ -11,6 +11,9 @@
  */
 
 package Proyecto3SO2;
+
+import javax.swing.JLabel;
+
 /**
  *
  * @author glucas & rperez
@@ -34,25 +37,25 @@ public class PanelTituloGUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        Nombre = new javax.swing.JLabel();
+        Accion = new javax.swing.JLabel();
+        Puntos = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(420, 45));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Nombre");
+        Nombre.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Nombre.setForeground(new java.awt.Color(255, 255, 255));
+        Nombre.setText("Nombre");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Acción");
+        Accion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Accion.setForeground(new java.awt.Color(255, 255, 255));
+        Accion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Accion.setText("Acción");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Puntos");
+        Puntos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Puntos.setForeground(new java.awt.Color(255, 255, 255));
+        Puntos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Puntos.setText("Puntos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -60,11 +63,11 @@ public class PanelTituloGUI extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Accion, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,17 +75,29 @@ public class PanelTituloGUI extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Nombre)
+                    .addComponent(Accion)
+                    .addComponent(Puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel Accion;
+    private javax.swing.JLabel Nombre;
+    private javax.swing.JLabel Puntos;
     // End of variables declaration//GEN-END:variables
+
+    public void setAccion(String Accion) {
+        this.Accion.setText(Accion);
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre.setText(Nombre);
+    }
+
+    public void setPuntos(String Puntos) {
+        this.Puntos.setText(Puntos);
+    }
 }

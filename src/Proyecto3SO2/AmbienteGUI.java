@@ -61,12 +61,12 @@ public class AmbienteGUI extends JFrame implements Observer{
         setContentPane(new JLabel(new ImageIcon(AmbienteGUI.class.getResource("iconos/fondo.png"))));
         setLayout(new FlowLayout());
         
-        LeeArchivoConfiguracion ();
         initComponents();
 
         servidor.deleteObservers();
         servidor.addObserver(this);
         
+        AsignadatosLocalesyRemotos();
 
     }
     
@@ -139,7 +139,12 @@ public class AmbienteGUI extends JFrame implements Observer{
        t.start();
     }
 
-    
+    private void AsignadatosLocalesyRemotos(){
+        // Remoto
+        panelTitulos1.setNombre(NombreRemoto);
+        // Local
+        panelTitulos2.setNombre(NombreLocal);
+    }
 
     @Override
     public void update(Observable o, Object arg) {

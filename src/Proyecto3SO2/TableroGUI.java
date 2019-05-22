@@ -20,6 +20,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
+
+import static Proyecto3SO2.AmbienteGUI.*;
+
 public class TableroGUI extends javax.swing.JPanel {
 
  
@@ -40,10 +43,10 @@ public class TableroGUI extends javax.swing.JPanel {
     private ImageIcon nomarcado, marcado;
     
     private CasillasGUI casillaOrigen;
-    public  int turnoDe =1;
+    
     public  int accion = SELECCIONAR;
     
-    public int equipo =1 ;
+    public int equipo =1;
 
 
  
@@ -52,13 +55,13 @@ public class TableroGUI extends javax.swing.JPanel {
     
     
     
-    public TableroGUI(int equipo) {
-        this.equipo = equipo;
-        initComponents();
-    }
+//    public TableroGUI(int equipo) {
+//        this.equipo = equipo;
+//        initComponents();
+//    }
     public TableroGUI(int sizex,int sizey, int equipo, AmbienteGUI a) {
         this.equipo = equipo;
-        turnoDe=equipo;
+        
         ambienteGUI = a;
         casillasTablerox = sizex;
         casillasTableroy = sizey;
@@ -96,13 +99,15 @@ public class TableroGUI extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setPreferredSize(new java.awt.Dimension(ladoTableroy+1, ladoTablerox+1));
         
+        Personaje.creaListadePersonajes2();
+        Personaje.creaListadePersonajes1();
         if (equipo == AmbienteGUI.EQUIPOREMOTO ){
             
             // Debe dejar el tablero del equipo remoto vacio ya que se llanara en la maquina remota
                
         } else {
-            Personaje.creaListadePersonajes2();
-            Personaje.creaEquipo(2);
+            
+            Personaje.creaEquipo(AmbienteGUI.EQUIPOLOCAL);
             
         }
     }           
@@ -125,17 +130,15 @@ public class TableroGUI extends javax.swing.JPanel {
         this.accion = accion;
     }
     
+    public int getTurnoDe(){
+        return turnoDe;
+    }
+    
     /*public static ArrayList<Personaje> getEquipos() {
         return equipos;
     }*/
     
-    public int getTurnoDe() {
-        return turnoDe;
-    }
 
-    public void setTurnoDe(int turnoDe) {
-        this.turnoDe = turnoDe;
-    }
 
     public ImageIcon getNoMarcado() {
         return nomarcado;

@@ -14,6 +14,7 @@
 package Proyecto3SO2;
 
 import java.io.Serializable;
+import static Proyecto3SO2.Inicial.AleatorioLocal;
 
 /**
  *
@@ -25,6 +26,7 @@ class MensajeInicial implements Serializable{
     private int columnas;
     private int filas;
     private int tipoEquipo;
+    private int aleatorio;
 
     public MensajeInicial( String nombre, int columnas, int filas,int tipoEquipo) {
         
@@ -32,6 +34,10 @@ class MensajeInicial implements Serializable{
         this.columnas   = columnas;
         this.filas      = filas;
         this.tipoEquipo = tipoEquipo;
+        this.aleatorio = (int) (Math.random()* 100);
+        AleatorioLocal = this.aleatorio;
+        
+        
     }
     
     public int getColumnas() {

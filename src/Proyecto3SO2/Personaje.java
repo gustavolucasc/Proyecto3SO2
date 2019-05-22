@@ -12,6 +12,8 @@
 package Proyecto3SO2;
 
 import javax.swing.ImageIcon;
+import static Proyecto3SO2.Inicial.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -28,6 +30,8 @@ public abstract class  Personaje implements Equipo{
     protected int equipo;
     
     protected ImageIcon Icono;
+    private final static  int cantidadPersonajes[]=  {3,4,5};
+    
     
 
 
@@ -77,20 +81,24 @@ public abstract class  Personaje implements Equipo{
     public static void  creaListadePersonajes2() {
         
 
+        Equipo.personajesDisponibles2.add(new BarcoLvl1());
         Equipo.personajesDisponibles2.add(new BarcoLvl2());
         Equipo.personajesDisponibles2.add(new BarcoLvl3());
-        Equipo.personajesDisponibles2.add(new BarcoLvl1());
+        
 
         
     }
     
-    private static Personaje agregaPersonajeAEquipo(int equipo){
+    private static Personaje agregaPersonajeAEquipo(int equipo,int personaje){
         
-        int cantidadPersonajes = (equipo==1)?Equipo.personajesDisponibles1.size():Equipo.personajesDisponibles2.size();
-        int numeroAleatorio = (int) (Math.random()*cantidadPersonajes);
+        int tipoPersonaje = (equipo==AmbienteGUI.EQUIPOLOCAL)?TipoPersonajeLocal:TipoPersonajeRemoto;
+        ArrayList <Personaje> personajesDisponibles =(tipoPersonaje==AVIONES)?Equipo.personajesDisponibles1:Equipo.personajesDisponibles2;
+        
+        int cantidadPersonajes = personajesDisponibles.size();
+        
 
-        return (equipo==1)?Equipo.personajesDisponibles1.get(numeroAleatorio).nuevoPersonaje(equipo):
-                Equipo.personajesDisponibles2.get(numeroAleatorio).nuevoPersonaje(equipo);
+        return personajesDisponibles.get(personaje).nuevoPersonaje(equipo);
+        
              
     }
     
@@ -130,12 +138,20 @@ public abstract class  Personaje implements Equipo{
     
     
     public static void creaEquipo(int equipo) {
-        Personaje nuevoPersonaje;  
+        Personaje nuevoPersonaje; 
+        int contador=1;
+        int indice=0;
     
         for (int i=0; i <Equipo.INTEGRANTESEQUIPO; i++){
-          nuevoPersonaje =agregaPersonajeAEquipo(equipo);
+          nuevoPersonaje =agregaPersonajeAEquipo(equipo,indice);
           Equipo.equipos.add(nuevoPersonaje);
           agregaAEstadistica(nuevoPersonaje);
+          
+          if (contador==cantidadPersonajes[indice]){
+              indice++;
+              contador = 0;
+          }
+          contador++;
         }
     }
 

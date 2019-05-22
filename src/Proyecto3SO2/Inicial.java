@@ -29,6 +29,9 @@ public class Inicial {
     public static MensajeInicial mensajeInicial;
     public static boolean  mensajeInicialEnviado=false;
     
+    public static final  int AVIONES = 1;
+    public static final  int BARCOS = 2;
+    
     public static int TamanioTableroYLocal = 0;
     public static int TamanioTableroXLocal = 0;
     public static String IPContrincante ="";
@@ -41,26 +44,11 @@ public class Inicial {
     public static int TamanioTableroYRemoto = 0;
     public static int TamanioTableroXRemoto = 0;
     
+    public static int AleatorioLocal=0;
+    public static int AleatorioRemoto=0;
     
     
-    /**
-     * @param args the command line arguments
-     */
-    
-    
-    /*public static void main(String[] args) {
-
-        
-    java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                AmbienteGUI ventana;
-                ventana= new AmbienteGUI();
-                ventana.setVisible(true);
-                ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);   
-                ventana.setResizable(false);
-            }
-        });
-    }*/
+  
     
     public static void main(String args[]) {
         
@@ -105,13 +93,13 @@ public class Inicial {
         PuertoSaliente=Integer.parseInt(archivoParam.readPropertie("PuertoSaliente"));
         TamanioTableroYLocal=Integer.parseInt(archivoParam.readPropertie("TamanoTableroX"));
         TamanioTableroXLocal=Integer.parseInt(archivoParam.readPropertie("TamanoTableroY"));
-        TipoPersonajeLocal="Barcos".equals(archivoParam.readPropertie("TipoPersonaje"))?1:2;
+        TipoPersonajeLocal="Barcos".equals(archivoParam.readPropertie("TipoPersonaje"))?BARCOS:AVIONES;
         NombreLocal=archivoParam.readPropertie("NombreCapitan");
         
         // Eliminar cuando se tenga el paquete remoto de configuracion
-        TamanioTableroYRemoto= TamanioTableroXLocal;//mensajeInicial.getFilas();
-        TamanioTableroXRemoto=TamanioTableroXLocal;
-        TipoPersonajeRemoto=TipoPersonajeLocal;
+//        TamanioTableroYRemoto= TamanioTableroXLocal;//mensajeInicial.getFilas();
+//        TamanioTableroXRemoto=TamanioTableroXLocal;
+//        TipoPersonajeRemoto=TipoPersonajeLocal;
     }
     
     

@@ -37,7 +37,7 @@ public class AmbienteGUI extends JFrame implements Observer{
     public static final int EQUIPOREMOTO = 1;
     public static final int EQUIPOLOCAL = 2;
     
-
+    public  static int turnoDe =0;
     
     private final JPanel PanelPrincipal1 = new JPanel();
     private final JPanel PanelPrincipal2 = new JPanel();
@@ -95,8 +95,8 @@ public class AmbienteGUI extends JFrame implements Observer{
        
         panelTitulos1 = new PanelTituloGUI();
         panelTitulos2 = new PanelTituloGUI();
-        tableroGUI = new TableroGUI(TamanioTableroXRemoto,TamanioTableroYRemoto,1,this);
-        tableroGUI2 = new TableroGUI(TamanioTableroXLocal,TamanioTableroYLocal,2,this);
+        tableroGUI = new TableroGUI(TamanioTableroXRemoto,TamanioTableroYRemoto,EQUIPOREMOTO,this);
+        tableroGUI2 = new TableroGUI(TamanioTableroXLocal,TamanioTableroYLocal,EQUIPOLOCAL,this);
          
                 
         FlowLayout layout = new FlowLayout();
@@ -144,6 +144,9 @@ public class AmbienteGUI extends JFrame implements Observer{
         panelTitulos1.setNombre(NombreRemoto);
         // Local
         panelTitulos2.setNombre(NombreLocal);
+        
+        //Define el turno
+        turnoDe = (AleatorioLocal>AleatorioRemoto)?EQUIPOLOCAL:EQUIPOREMOTO;
     }
 
     @Override

@@ -215,7 +215,7 @@ public void cambiarTurno(){
         turnoDe = 2;
     else turnoDe =1;
     
-    turnoDe=this.tablero;
+    
 }
 
 

@@ -168,7 +168,16 @@ public class AmbienteGUI extends JFrame implements Observer{
         ImprimeTurno();
         
     }
+    public void CambiarTurno(){
 
+
+        if (turnoDe == 1)
+            turnoDe = 2;
+        else turnoDe =1;
+
+        ImprimeTurno();
+
+    }
     @Override
     public void update(Observable o, Object arg) {
         Mensaje mensaje = (Mensaje) arg;
@@ -189,9 +198,12 @@ public class AmbienteGUI extends JFrame implements Observer{
                 panelChat.setFldHistorial(panelChat.getFldHistorial()+"Remoto: "+ mensaje.getMensaje());
                 break;
             case ACERTADO:
-                
+                tableroRemoto.setAccion(TableroGUI.SELECCIONAR);
+                CambiarTurno();
                 break;
             case FALLO:
+                tableroRemoto.setAccion(TableroGUI.SELECCIONAR);
+                CambiarTurno();
                 break;
             default: 
                 break;

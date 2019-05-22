@@ -21,7 +21,7 @@ class Mensaje implements Serializable{
     
     private int tipo;
      /*
-      -1 mensaje error
+      -1 FALLO
       0  exito 
       1  disparo
       2  mensaje chat
@@ -29,10 +29,16 @@ class Mensaje implements Serializable{
     private String mensaje;
     private int x;
     private int y;
+    private Personaje personaje=null;
 
     public Mensaje(int tipo, String mensaje, int x, int y) {
         this.tipo = tipo;
         this.mensaje = mensaje;
+        this.x = x;
+        this.y = y;
+    }
+    public Mensaje (int tipo, int x,int y){
+        this.tipo = tipo;
         this.x = x;
         this.y = y;
     }
@@ -41,6 +47,14 @@ class Mensaje implements Serializable{
         this.mensaje = mensaje;
   
     }
+
+    public Mensaje(int tipo, int x, int y, Personaje personaje) {
+        this.tipo = tipo;
+        this.x = x;
+        this.y = y;
+        this.personaje = personaje;
+    }
+    
 
     public int getTipo() {
         return tipo;

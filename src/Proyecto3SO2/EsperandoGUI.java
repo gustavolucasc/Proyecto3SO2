@@ -173,6 +173,7 @@ public class EsperandoGUI extends JFrame  implements Observer {
     NombreRemoto=mensaje.getNombre();    
     TamanioTableroYRemoto = mensaje.getFilas();
     TamanioTableroXRemoto = mensaje.getColumnas();
+    AleatorioRemoto = mensaje.getAleatorio();
     
     Inicio.setEnabled(true);
       levantaAmbienteGUI();   

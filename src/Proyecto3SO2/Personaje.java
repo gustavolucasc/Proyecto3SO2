@@ -23,14 +23,14 @@ import java.util.ArrayList;
 
 public abstract class  Personaje implements Equipo{
     protected String nombrePersonaje;
-    protected int vida;
+    protected int vida=1;
     protected String path="iconos/";
     protected String nomIcono;
     
     protected int equipo;
     
     protected ImageIcon Icono;
-    private final static  int cantidadPersonajes[]=  {3,4,5};
+    private final static  int CANTIDADPERSONAJES[]=  {3,4,5};
     
     
 
@@ -147,7 +147,7 @@ public abstract class  Personaje implements Equipo{
           Equipo.equipos.add(nuevoPersonaje);
           agregaAEstadistica(nuevoPersonaje);
           
-          if (contador==cantidadPersonajes[indice]){
+          if (contador==CANTIDADPERSONAJES[indice]){
               indice++;
               contador = 0;
           }
@@ -175,6 +175,17 @@ public abstract class  Personaje implements Equipo{
 
     public String getNomIcono() {
         return nomIcono;
+    }
+    
+    public String getNomIconoEliminado(){
+        String resultado=null;
+        String valores[];
+        
+        valores = nomIcono.split(".");
+        
+        resultado  = valores[0]+"X."+valores[1];
+        
+        return resultado;
     }
 
     public void setNomIcono(String nomIcono) {

@@ -20,6 +20,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import static Proyecto3SO2.AmbienteGUI.*;
+
+
 public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
     /* 
      * Constantes:
@@ -33,7 +36,7 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
     private int [] casillaMarcada = new int[2];
     private boolean estaMarcada;
     public  int clicks = 0;
-    
+    private boolean bloqueada =false;
 
     
     private Personaje personaje; 
@@ -127,14 +130,29 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
         int [] casillaSeleccionada = tablero.getCoordenadas((CasillasGUI)e.getComponent());
         this.setCasillaMarcada(casillaSeleccionada);
         nuevoFondo = fondo; //fondo de tipo de terreno
-              
-        ejecutaAccion(casillaSeleccionada); 
+        if (tablero.tablero == EQUIPOLOCAL)  {    
+            ejecutaAccionLocal(casillaSeleccionada); 
+        } else {
+            ejecutaAccionRemota(casillaSeleccionada);
+        }
         
         this.tablero.pintar(casillaMarcada[0],casillaMarcada[1],nuevoFondo);
     }
     
-    
-    private void ejecutaAccion (int [] casillaSeleccionada){
+    private void ejecutaAccionRemota (int [] casillaSeleccionada){
+      int x = casillaSeleccionada[0];
+      int y = casillaSeleccionada[1];
+      
+      switch (tablero.accion){ 
+          case TableroGUI.SELECCIONAR:
+              if (personaje == null){
+                  if (!bloqueada) {
+                      transmitirMensaje(new Mensaje(DISPARO,x,y));
+                  }
+              }
+      }
+    }
+    private void ejecutaAccionLocal (int [] casillaSeleccionada){
         
         switch (tablero.accion){
             case TableroGUI.SELECCIONAR:
@@ -153,7 +171,7 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
             case TableroGUI.SELECCIONARDESTINO: 
                 if (this.equals (tablero.getCasillaOrigen())){
                     tablero.setAccion(TableroGUI.SELECCIONAR);
-                    ejecutaAccion(casillaSeleccionada);
+                    ejecutaAccionLocal(casillaSeleccionada);
                     //mousePressed(e);
                 }
                 else

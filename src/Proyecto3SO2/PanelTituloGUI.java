@@ -12,6 +12,7 @@
 
 package Proyecto3SO2;
 
+import java.awt.Color;
 import javax.swing.JLabel;
 
 /**
@@ -55,7 +56,7 @@ public class PanelTituloGUI extends javax.swing.JPanel {
         Puntos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         Puntos.setForeground(new java.awt.Color(255, 255, 255));
         Puntos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        Puntos.setText("Puntos");
+        Puntos.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,6 +92,11 @@ public class PanelTituloGUI extends javax.swing.JPanel {
 
     public void setAccion(String Accion) {
         this.Accion.setText(Accion);
+        if (Accion=="Espera"){
+            this.Accion.setForeground(Color.red);
+        } else {
+            this.Accion.setForeground(Color.green);
+        }
     }
 
     public void setNombre(String Nombre) {

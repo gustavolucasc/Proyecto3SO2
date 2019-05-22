@@ -39,6 +39,10 @@ class MensajeInicial implements Serializable{
         
         
     }
+
+    public int getAleatorio() {
+        return aleatorio;
+    }
     
     public int getColumnas() {
         return columnas;

@@ -37,6 +37,12 @@ public class AmbienteGUI extends JFrame implements Observer{
     public static final int EQUIPOREMOTO = 1;
     public static final int EQUIPOLOCAL = 2;
     
+    // TIPOS DE MENSAJE 
+    public static final int DISPARO=1;
+    public static final int CHAT =2;
+    public static final int ACERTADO =3;
+    public static final int FALLO=-1;
+    
     public  static int turnoDe =0;
     
     private final JPanel PanelPrincipal1 = new JPanel();
@@ -52,7 +58,7 @@ public class AmbienteGUI extends JFrame implements Observer{
     private PanelChatGUI panelChat;
     @SuppressWarnings("FieldMayBeFinal")
 
-    private TableroGUI tableroGUI,tableroGUI2;
+    private TableroGUI tableroRemoto,tableroLocal;
 
     
     
@@ -95,8 +101,8 @@ public class AmbienteGUI extends JFrame implements Observer{
        
         panelTitulos1 = new PanelTituloGUI();
         panelTitulos2 = new PanelTituloGUI();
-        tableroGUI = new TableroGUI(TamanioTableroXRemoto,TamanioTableroYRemoto,EQUIPOREMOTO,this);
-        tableroGUI2 = new TableroGUI(TamanioTableroXLocal,TamanioTableroYLocal,EQUIPOLOCAL,this);
+        tableroRemoto = new TableroGUI(TamanioTableroXRemoto,TamanioTableroYRemoto,EQUIPOREMOTO,this);
+        tableroLocal = new TableroGUI(TamanioTableroXLocal,TamanioTableroYLocal,EQUIPOLOCAL,this);
          
                 
         FlowLayout layout = new FlowLayout();
@@ -120,10 +126,10 @@ public class AmbienteGUI extends JFrame implements Observer{
         getContentPane().add(PanelInformativo);
         
         PanelPrincipal1.add(panelTitulos1);
-        PanelPrincipal1.add(tableroGUI);
+        PanelPrincipal1.add(tableroRemoto);
         
         PanelPrincipal2.add(panelTitulos2);
-        PanelPrincipal2.add(tableroGUI2);
+        PanelPrincipal2.add(tableroLocal);
         
         PanelInformativo.add(panelChat);
         
@@ -133,12 +139,23 @@ public class AmbienteGUI extends JFrame implements Observer{
         
     }
   
-    public void transmitirMensaje (Mensaje m){
+    public static  void transmitirMensaje (Mensaje m){
        Cliente c = new Cliente(IPContrincante,PuertoSaliente,m);
        Thread t  = new Thread(c);
        t.start();
     }
 
+    private void ImprimeTurno(){
+        if (turnoDe == EQUIPOLOCAL){
+            panelTitulos1.setAccion("Espera");
+            panelTitulos2.setAccion("Atacando");
+            
+        } else {
+            panelTitulos2.setAccion("Espera");
+            panelTitulos1.setAccion("Atacando");
+        }
+    }
+    
     private void AsignadatosLocalesyRemotos(){
         // Remoto
         panelTitulos1.setNombre(NombreRemoto);
@@ -147,14 +164,34 @@ public class AmbienteGUI extends JFrame implements Observer{
         
         //Define el turno
         turnoDe = (AleatorioLocal>AleatorioRemoto)?EQUIPOLOCAL:EQUIPOREMOTO;
+        
+        ImprimeTurno();
+        
     }
 
     @Override
     public void update(Observable o, Object arg) {
         Mensaje mensaje = (Mensaje) arg;
+        Personaje personaje = null;
         switch (mensaje.getTipo()){
-            case 2: // tipo chat
+            case DISPARO:
+                    personaje = tableroLocal.validaDisparo(mensaje.getX(),mensaje.getY());
+                    if (personaje != null){
+                        transmitirMensaje(new Mensaje(ACERTADO,mensaje.getX(),mensaje.getY(),personaje));
+                        tableroLocal.eliminaPersonaje(mensaje.getX(),mensaje.getY());
+                    } else {
+                        transmitirMensaje(new Mensaje(FALLO,mensaje.getX(),mensaje.getY()));
+                        
+                    }
+                    
+                break;
+            case CHAT: // tipo chat
                 panelChat.setFldHistorial(panelChat.getFldHistorial()+"Remoto: "+ mensaje.getMensaje());
+                break;
+            case ACERTADO:
+                
+                break;
+            case FALLO:
                 break;
             default: 
                 break;

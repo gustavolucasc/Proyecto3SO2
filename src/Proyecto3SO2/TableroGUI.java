@@ -46,21 +46,14 @@ public class TableroGUI extends javax.swing.JPanel {
     
     public  int accion = SELECCIONAR;
     
-    public int equipo =1;
+    public int tablero =EQUIPOLOCAL;
+    
+    public int personajesVivos = 12;
 
-
- 
-    
-    
-    
-    
-    
-//    public TableroGUI(int equipo) {
-//        this.equipo = equipo;
-//        initComponents();
-//    }
-    public TableroGUI(int sizex,int sizey, int equipo, AmbienteGUI a) {
-        this.equipo = equipo;
+  
+   
+    public TableroGUI(int sizex,int sizey, int tablero, AmbienteGUI a) {
+        this.tablero = tablero;
         
         ambienteGUI = a;
         casillasTablerox = sizex;
@@ -98,10 +91,11 @@ public class TableroGUI extends javax.swing.JPanel {
         setBackground(new java.awt.Color(254, 254, 254));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setPreferredSize(new java.awt.Dimension(ladoTableroy+1, ladoTablerox+1));
-        
+        // Crea las listas de personajes disponibles para su utilización 
         Personaje.creaListadePersonajes2();
         Personaje.creaListadePersonajes1();
-        if (equipo == AmbienteGUI.EQUIPOREMOTO ){
+        
+        if (tablero == AmbienteGUI.EQUIPOREMOTO ){
             
             // Debe dejar el tablero del equipo remoto vacio ya que se llanara en la maquina remota
                
@@ -218,13 +212,13 @@ public void cambiarTurno(){
         turnoDe = 2;
     else turnoDe =1;
     
-    turnoDe=this.equipo;
+    turnoDe=this.tablero;
 }
 
 
 private void posicionaEquipos(){
     for (int i=0;i < Equipo.equipos.size();i++){
-        if (Equipo.equipos.get(i).equipo ==equipo){
+        if (Equipo.equipos.get(i).equipo ==tablero){
            Personaje personaje=Equipo.equipos.get(i);
         int x =  (int) (Math.random()*casillasTablerox);
         int y =  (int) (Math.random()*casillasTableroy);
@@ -239,5 +233,21 @@ private void posicionaEquipos(){
     }
 }
 
+    public Personaje validaDisparo(int x , int y){
+        Personaje resultado = null;
+          
+        resultado=casillas[x][y].getPersonaje();
+         
+        return resultado;
+    }
 
+    public void eliminaPersonaje (int x, int y){
+        Personaje resultado = null; 
+        resultado=casillas[x][y].getPersonaje();
+        resultado.setNomIcono(resultado.getNomIconoEliminado());
+        resultado.setIcono(cargarImagenes(resultado.getNomIcono()));
+        personajesVivos --;
+        
+        pintar(x,y,resultado.getIcono());
+    }
 }

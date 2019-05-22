@@ -28,6 +28,9 @@ public class TableroGUI extends javax.swing.JPanel {
  
     public static final int SELECCIONAR = 1;
     public static final int SELECCIONARDESTINO = 2;
+    public static final int ESPERARESPUESTA = 3;
+    
+    
     public static final int ATACAR = 3;
     private final int LADOCASILLA=50;
     //private final int INTEGRANTESEQUIPO=10;
@@ -242,6 +245,8 @@ private void posicionaEquipos(){
     }
 
     public void eliminaPersonaje (int x, int y){
+        
+        sonido("acerto");
         Personaje resultado = null; 
         resultado=casillas[x][y].getPersonaje();
         resultado.setNomIcono(resultado.getNomIconoEliminado());

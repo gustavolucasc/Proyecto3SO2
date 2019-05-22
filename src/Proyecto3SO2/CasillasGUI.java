@@ -147,9 +147,16 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
           case TableroGUI.SELECCIONAR:
               if (personaje == null){
                   if (!bloqueada) {
+                      tablero.setAccion(TableroGUI.ESPERARESPUESTA);
                       transmitirMensaje(new Mensaje(DISPARO,x,y));
                   }
               }
+              break;
+          case TableroGUI.ESPERARESPUESTA:
+              break;
+           default:
+              break;
+                      
       }
     }
     private void ejecutaAccionLocal (int [] casillaSeleccionada){

@@ -13,7 +13,9 @@ package Proyecto3SO2;
 
 import javax.swing.ImageIcon;
 import static Proyecto3SO2.Inicial.*;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -21,7 +23,7 @@ import java.util.ArrayList;
  */
 
 
-public abstract class  Personaje implements Equipo{
+public abstract class  Personaje implements Equipo, Serializable{
     protected String nombrePersonaje;
     protected int vida=1;
     protected String path="iconos/";
@@ -181,7 +183,7 @@ public abstract class  Personaje implements Equipo{
         String resultado=null;
         String valores[];
         
-        valores = nomIcono.split(".");
+        valores = nomIcono.split(Pattern.quote("."));
         
         resultado  = valores[0]+"X."+valores[1];
         

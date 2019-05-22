@@ -178,6 +178,13 @@ public class AmbienteGUI extends JFrame implements Observer{
         ImprimeTurno();
 
     }
+    
+    private String FondoLibre(){
+      String resultado="";
+           resultado = (TipoPersonajeRemoto==BARCOS)?"iconos/fondoMar.png":"iconos/fondoAire.png";
+      return resultado;
+    };
+    
     @Override
     public void update(Observable o, Object arg) {
         Mensaje mensaje = (Mensaje) arg;
@@ -192,16 +199,24 @@ public class AmbienteGUI extends JFrame implements Observer{
                         transmitirMensaje(new Mensaje(FALLO,mensaje.getX(),mensaje.getY()));
                         
                     }
-                    
+                    CambiarTurno();
                 break;
             case CHAT: // tipo chat
                 panelChat.setFldHistorial(panelChat.getFldHistorial()+"Remoto: "+ mensaje.getMensaje());
                 break;
             case ACERTADO:
+                personaje = mensaje.getPersonaje();
+                tableroRemoto.getCasillas()[mensaje.getX()][mensaje.getY()].setPersonaje(personaje);
+                tableroRemoto.getCasillas()[mensaje.getX()][mensaje.getY()].setBloqueada(true);
+                tableroRemoto.eliminaPersonaje(mensaje.getX(),mensaje.getY());
                 tableroRemoto.setAccion(TableroGUI.SELECCIONAR);
                 CambiarTurno();
                 break;
             case FALLO:
+                tableroRemoto.sonido("fallo");
+                ImageIcon fondo=tableroRemoto.cargarFondo(FondoLibre());
+                tableroRemoto.pintar(mensaje.getX(),mensaje.getY(),fondo);
+                tableroRemoto.getCasillas()[mensaje.getX()][mensaje.getY()].setBloqueada(true);
                 tableroRemoto.setAccion(TableroGUI.SELECCIONAR);
                 CambiarTurno();
                 break;

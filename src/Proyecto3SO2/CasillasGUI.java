@@ -62,6 +62,16 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
         );
     }
 
+    public boolean isBloqueada() {
+        return bloqueada;
+    }
+
+    public void setBloqueada(boolean bloqueada) {
+        this.bloqueada = bloqueada;
+    }
+
+    
+    
     public Personaje getPersonaje() {
         return personaje;
     }
@@ -117,7 +127,7 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
         int[] casillaSeleccionada = tablero.getCoordenadas((CasillasGUI) e.getComponent());
         this.setCasillaMarcada(casillaSeleccionada);
         nuevoFondo = fondo; //fondo de tipo de terreno
-        if (AmbienteGUI.turnoDe == tablero.tablero) {
+        if (AmbienteGUI.turnoDe != tablero.tablero) {
             if (tablero.tablero == EQUIPOLOCAL) {
                 ejecutaAccionLocal(casillaSeleccionada);
             } else {

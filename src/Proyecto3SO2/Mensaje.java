@@ -87,6 +87,10 @@ class Mensaje implements Serializable{
     public void setY(int y) {
         this.y = y;
     }
+
+    public Personaje getPersonaje() {
+        return personaje;
+    }
         
     
 }

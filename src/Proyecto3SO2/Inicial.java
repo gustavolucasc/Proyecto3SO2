@@ -53,8 +53,18 @@ public class Inicial {
     public static void main(String args[]) {
         
         archivoParam = new ArchivoConfiguracion();
-        
-        Bitacora bitacora = new Bitacora("Iniciamos el Juego"); 
+        String encabezado = "/*\n" +
+        " * UNIVERSIDAD MARIANO GALVEZ\n" +
+        " * INGENIERIA DE SISTEMAS DE INFORMACION\n" +
+        " * SISTEMAS OPERATIVOS 2\n" +
+        " * Gustavo Adolfo Lucas Cifuentes\n" +
+        " * 7690-17-2810\n" +
+        " * Ronal Geovani Perez Atz\n" +
+        " * 7690-14-11506\n" +
+        " * Proyecto 3 \n" +
+        " * Primer  Semestre 2019\n" +
+        " */\n\n" ;
+        Bitacora bitacora = new Bitacora(encabezado + "Iniciamos el Juego\n"); 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

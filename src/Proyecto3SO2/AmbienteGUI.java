@@ -59,6 +59,7 @@ public class AmbienteGUI extends JFrame implements Observer{
     @SuppressWarnings("FieldMayBeFinal")
 
     private TableroGUI tableroRemoto,tableroLocal;
+    public static BitacoraPanel panelBitacora = null;
     
     public static boolean tableroLocalBloqueado=false;
 
@@ -100,6 +101,7 @@ public class AmbienteGUI extends JFrame implements Observer{
         
         
         panelChat = new PanelChatGUI(this);
+        panelBitacora= new BitacoraPanel();
        
         panelTitulos1 = new PanelTituloGUI();
         panelTitulos2 = new PanelTituloGUI();
@@ -134,6 +136,7 @@ public class AmbienteGUI extends JFrame implements Observer{
         PanelPrincipal2.add(tableroLocal);
         
         PanelInformativo.add(panelChat);
+         getContentPane().add(panelBitacora);
         
         pack();
         //setResizable(false);

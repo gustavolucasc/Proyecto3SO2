@@ -12,6 +12,7 @@
 package Proyecto3SO2;
 
 import  java.io.*;
+import static  Proyecto3SO2.AmbienteGUI.panelBitacora; 
 public class Bitacora {
     FileWriter  archivo = null;
     PrintWriter pw = null;
@@ -32,10 +33,13 @@ public class Bitacora {
     private void procesaMensaje (String msj){
          try
         {
-            archivo = new FileWriter("c:/prueba.txt",agrega);
+            archivo = new FileWriter(nomArchivo,agrega);
             pw = new PrintWriter(archivo);
             pw.println(msj);
-
+            
+            if (panelBitacora !=null ){ 
+                panelBitacora.setUltimoMensaje(msj);
+            }
             
         } catch (Exception e) {
             e.printStackTrace();

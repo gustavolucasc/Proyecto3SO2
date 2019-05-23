@@ -25,10 +25,10 @@ public class AvionLvl3 extends Personaje{
     }
             
     public AvionLvl3(int equipo){
-        nombrePersonaje = "AvionLvl3"; //getAtributo("nombre");
+        nombrePersonaje = "Avion Grande"; //getAtributo("nombre");
         vida = 100;//getAtributo("vida");
         
-        nomIcono=path+"avionLvl3.png";//getAtributo("nomIcono");
+        nomIcono=path+"avion3.jpg";//getAtributo("nomIcono");
         
         
         this.equipo = equipo;

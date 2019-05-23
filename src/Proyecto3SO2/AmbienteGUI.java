@@ -59,6 +59,8 @@ public class AmbienteGUI extends JFrame implements Observer{
     @SuppressWarnings("FieldMayBeFinal")
 
     private TableroGUI tableroRemoto,tableroLocal;
+    
+    public static boolean tableroLocalBloqueado=false;
 
     
     
@@ -110,8 +112,8 @@ public class AmbienteGUI extends JFrame implements Observer{
         getContentPane().setLayout(layout);  
         
         
-        panelTitulos1.setBackground(new Color(254,0,0,0));     
-        panelTitulos2.setBackground(new Color(254,0,0,0));
+        //panelTitulos1.setBackground(new Color(254,0,0,0));     
+        //panelTitulos2.setBackground(new Color(254,0,0,0));
         PanelPrincipal1.setBackground(new Color(0,0,0,150));
         PanelPrincipal2.setBackground(new Color(0,0,0,150));
         PanelInformativo.setBackground(new Color(254,0,0,0));
@@ -145,7 +147,7 @@ public class AmbienteGUI extends JFrame implements Observer{
        t.start();
     }
 
-    private void ImprimeTurno(){
+    public  void ImprimeTurno(){
         if (turnoDe == EQUIPOLOCAL){
             panelTitulos1.setAccion("Espera");
             panelTitulos2.setAccion("Atacando");
@@ -154,6 +156,11 @@ public class AmbienteGUI extends JFrame implements Observer{
             panelTitulos2.setAccion("Espera");
             panelTitulos1.setAccion("Atacando");
         }
+        
+        panelTitulos1.setPuntos(Integer.toString(tableroRemoto.personajesVivos));
+        panelTitulos2.setPuntos(Integer.toString(tableroLocal.personajesVivos));
+        
+
     }
     
     private void AsignadatosLocalesyRemotos(){
@@ -179,51 +186,71 @@ public class AmbienteGUI extends JFrame implements Observer{
 
     }
     
-    private String FondoLibre(){
+    private String FondoLibre(TableroGUI _tablero){
       String resultado="";
-           resultado = (TipoPersonajeRemoto==BARCOS)?"iconos/fondoMar.png":"iconos/fondoAire.png";
+      if (_tablero.tablero==EQUIPOREMOTO){
+        resultado = (TipoPersonajeRemoto==BARCOS)?"iconos/fondoMar.png":"iconos/fondoAire.png";
+      }else{
+        resultado = (TipoPersonajeLocal==BARCOS)?"iconos/fondoMar.png":"iconos/fondoAire.png"; 
+      }
       return resultado;
     };
+    
+    private void fallo (int _x, int _y ,TableroGUI _tablero){
+        _tablero.sonido("fallo");
+        ImageIcon fondo;
+        fondo = TableroGUI.cargarFondo(FondoLibre(_tablero));
+        _tablero.pintar(_x,_y,fondo);
+    }
+    
     
     @Override
     public void update(Observable o, Object arg) {
         Mensaje mensaje = (Mensaje) arg;
         Personaje personaje = null;
+        String mensajeBitacora ="";
         switch (mensaje.getTipo()){
             case DISPARO:
+                    mensajeBitacora= "Has recibido un disparo a la posicion ("+mensaje.getX()+","+mensaje.getY()+")\n";
                     personaje = tableroLocal.validaDisparo(mensaje.getX(),mensaje.getY());
                     if (personaje != null){
                         transmitirMensaje(new Mensaje(ACERTADO,mensaje.getX(),mensaje.getY(),personaje));
                         tableroLocal.eliminaPersonaje(mensaje.getX(),mensaje.getY());
                     } else {
                         transmitirMensaje(new Mensaje(FALLO,mensaje.getX(),mensaje.getY()));
-                        
+                        fallo(mensaje.getX(),mensaje.getY(),tableroLocal);
                     }
+                    
+                    
                     CambiarTurno();
                 break;
             case CHAT: // tipo chat
                 panelChat.setFldHistorial(panelChat.getFldHistorial()+"Remoto: "+ mensaje.getMensaje());
+                mensajeBitacora= "Has recibido el mensaje:"+mensaje+"\n";
                 break;
             case ACERTADO:
+                
                 personaje = mensaje.getPersonaje();
                 tableroRemoto.getCasillas()[mensaje.getX()][mensaje.getY()].setPersonaje(personaje);
                 tableroRemoto.getCasillas()[mensaje.getX()][mensaje.getY()].setBloqueada(true);
                 tableroRemoto.eliminaPersonaje(mensaje.getX(),mensaje.getY());
                 tableroRemoto.setAccion(TableroGUI.SELECCIONAR);
                 CambiarTurno();
+                
+                mensajeBitacora= "Has destruido una nave\n";
                 break;
             case FALLO:
-                tableroRemoto.sonido("fallo");
-                ImageIcon fondo=tableroRemoto.cargarFondo(FondoLibre());
-                tableroRemoto.pintar(mensaje.getX(),mensaje.getY(),fondo);
+                
+                fallo(mensaje.getX(),mensaje.getY(),tableroRemoto);
                 tableroRemoto.getCasillas()[mensaje.getX()][mensaje.getY()].setBloqueada(true);
                 tableroRemoto.setAccion(TableroGUI.SELECCIONAR);
                 CambiarTurno();
+                mensajeBitacora="No has acertado\n";
                 break;
             default: 
                 break;
         }
-        
+        Bitacora bitacora=new Bitacora(mensajeBitacora,true);
         
     }
                 

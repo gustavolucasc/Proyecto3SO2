@@ -14,7 +14,8 @@
 package Proyecto3SO2;
 
 import java.io.Serializable;
-import static Proyecto3SO2.Inicial.AleatorioLocal;
+import static Proyecto3SO2.Inicial.*;
+
 
 /**
  *
@@ -60,7 +61,17 @@ class MensajeInicial implements Serializable{
         return tipoEquipo;
     }
     
-
+    public String toString(){
+        String resultado = "";
+        resultado = "Has enviado un mensaje de Inicio de Juego con la siguiente información:\n";
+        resultado += "Tu nombre:"+nombre+"\n";
+        resultado += "Columnas: "+columnas+"\n";
+        resultado += "Filas: "+filas+"\n";
+        resultado += "Tipo Equipo"+((tipoEquipo==BARCOS)?"Barcos":"Aviones")+"\n";
+        resultado += "Número Aleatorio:"+aleatorio+"\n";
+  
+        return resultado;
+    }
     
         
     

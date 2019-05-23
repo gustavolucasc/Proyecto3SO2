@@ -42,6 +42,7 @@ public class PanelTituloGUI extends javax.swing.JPanel {
         Accion = new javax.swing.JLabel();
         Puntos = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(0, 0, 0));
         setPreferredSize(new java.awt.Dimension(420, 45));
 
         Nombre.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N

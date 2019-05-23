@@ -127,18 +127,23 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
         int[] casillaSeleccionada = tablero.getCoordenadas((CasillasGUI) e.getComponent());
         this.setCasillaMarcada(casillaSeleccionada);
         nuevoFondo = fondo; //fondo de tipo de terreno
-        if (AmbienteGUI.turnoDe != tablero.tablero) {
+        
             if (tablero.tablero == EQUIPOLOCAL) {
-                ejecutaAccionLocal(casillaSeleccionada);
+                if (!tableroLocalBloqueado)
+                  ejecutaAccionLocal(casillaSeleccionada);
             } else {
-                ejecutaAccionRemota(casillaSeleccionada);
-            }
+                if (AmbienteGUI.turnoDe != tablero.tablero) {
+                    
+                    ejecutaAccionRemota(casillaSeleccionada);
+                }
         }
 
         this.tablero.pintar(casillaMarcada[0], casillaMarcada[1], nuevoFondo);
     }
 
     private void ejecutaAccionRemota(int[] casillaSeleccionada) {
+        
+        //Acciones en el tablero Remoto 
         int x = casillaSeleccionada[0];
         int y = casillaSeleccionada[1];
 
@@ -147,6 +152,7 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
                 if (personaje == null) {
                     if (!bloqueada) {
                         tablero.setAccion(TableroGUI.ESPERARESPUESTA);
+                        tableroLocalBloqueado = true;
                         transmitirMensaje(new Mensaje(DISPARO, x, y));
                     }
                 }
@@ -160,11 +166,13 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
     }
 
     private void ejecutaAccionLocal(int[] casillaSeleccionada) {
+        
+        // Acciones en el tablero Local
 
         switch (tablero.accion) {
             case TableroGUI.SELECCIONAR:
                 if (personaje != null) {
-                    if (personaje.getEquipo() == tablero.getTurnoDe()) {
+                    
                         if (estaMarcada) {
                             estaMarcada = false;
                             tablero.setCasillaOrigen(null);
@@ -174,7 +182,7 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
                             tablero.setAccion(TableroGUI.SELECCIONARDESTINO);
                             this.setCasillaMarcada(casillaSeleccionada);
                         }
-                    }
+                    
                 }
                 break;
             case TableroGUI.SELECCIONARDESTINO:
@@ -183,32 +191,12 @@ public class CasillasGUI extends javax.swing.JPanel implements MouseListener {
                     ejecutaAccionLocal(casillaSeleccionada);
                     //mousePressed(e);
                 } else if (personaje != null) {
-                    tablero.sonido("acerto");
+                    
                     if (personaje.getEquipo() != tablero.getTurnoDe()) {
-                        tablero.getCasillaOrigen().personaje.atacar(personaje);
-                        if (personaje.getVida() == 0) {
-                            this.fondo = tablero.getNoMarcado();
-                            this.nuevoFondo = tablero.getNoMarcado();
-                            tablero.getCasillaOrigen().getPersonaje().deduceAEstadistica(personaje);
-                            JOptionPane.showMessageDialog(null, tablero.getCasillaOrigen().getPersonaje().getNombrePersonaje()
-                                    + " a Eliminado a " + personaje.getNombrePersonaje());
-                            personaje = null;
-
-                        } else {
-                            JOptionPane.showMessageDialog(null, tablero.getCasillaOrigen().getPersonaje().getNombrePersonaje()
-                                    + " a Atacado a " + personaje.getNombrePersonaje() + " lo a herido dejando "
-                                    + personaje.getVida() + "% de vida");
-                        }
-
-                        tablero.getCasillaOrigen().estaMarcada = false;
-                        this.tablero.pintar(tablero.getCasillaOrigen().casillaMarcada[0], tablero.getCasillaOrigen().casillaMarcada[1],
-                                tablero.getCasillaOrigen().fondo);
-
-                        tablero.cambiarTurno();
-                        tablero.setAccion(TableroGUI.SELECCIONAR);
+                        // No hace nada por que la casilla esta ocupada
                     }
                 } else {
-                    tablero.sonido("fallo");
+                    
                     personaje = tablero.getCasillaOrigen().personaje;
                     estaMarcada = false;
                     nuevoFondo = tablero.getCasillaOrigen().fondo;

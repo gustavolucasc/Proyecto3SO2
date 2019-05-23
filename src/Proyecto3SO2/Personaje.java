@@ -183,10 +183,14 @@ public abstract class  Personaje implements Equipo, Serializable{
         String resultado=null;
         String valores[];
         
+        if (!nomIcono.contains("X")){
         valores = nomIcono.split(Pattern.quote("."));
         
         resultado  = valores[0]+"X."+valores[1];
-        
+        } else {
+            resultado = nomIcono;
+        }
+            
         return resultado;
     }
 

@@ -67,6 +67,7 @@ public class Cliente implements Runnable {
                 if (mensajeSaliente instanceof MensajeInicial) {
                     mensajeInicialEnviado = true;
                 }
+                Bitacora bitacora = new Bitacora(mensajeSaliente.toString(),true);
             } catch (SocketTimeoutException ex) {
                 Logger.getLogger(Cliente.class.getName()).log(Level.INFO, "No Pudo conectarse con el Servidor");
                 enlaceServidor = new Socket();

@@ -253,6 +253,15 @@ private void posicionaEquipos(){
         resultado.setIcono(cargarImagenes(resultado.getNomIcono()));
         personajesVivos --;
         
+        if (personajesVivos==0){
+            ambienteGUI.ImprimeTurno();
+            if (tablero == EQUIPOLOCAL){
+                JOptionPane.showMessageDialog(null,"  :-(   Lamentamos mucho pero has Perdido!!!");
+            } else {
+                JOptionPane.showMessageDialog(null,":-) Excelente has ganado !!!");
+            }
+           System.exit(0); 
+        }
         pintar(x,y,resultado.getIcono());
     }
 }

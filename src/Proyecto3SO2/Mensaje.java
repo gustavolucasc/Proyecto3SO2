@@ -12,6 +12,7 @@
 package Proyecto3SO2;
 
 import java.io.Serializable;
+import static  Proyecto3SO2.AmbienteGUI.*;
 
 /**
  *
@@ -91,6 +92,26 @@ class Mensaje implements Serializable{
     public Personaje getPersonaje() {
         return personaje;
     }
+    
+    @Override
+    public String toString (){
+        String resultado="";
+        switch (tipo){
+            case DISPARO:
+                resultado = "Has Disparado a la posicion ("+x+","+y+")\n";
+                break;
+            case CHAT :
+                resultado = "Has Enviado el mensaje:"+mensaje+"\n";
+                break;
+            case ACERTADO :
+                resultado = "Te han destruido una nave\n";
+                break;
+            case FALLO:
+                resultado = "No han acertado\n";
+                break;
+        }
         
+        return (resultado);  
+    }
     
 }

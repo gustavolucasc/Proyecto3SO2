@@ -28,7 +28,7 @@ public class AvionLvl2 extends Personaje{
         nombrePersonaje = "Avion Medio"; //getAtributo("nombre");
         vida = 25;//getAtributo("vida");
      
-        nomIcono=path+"avionLvl2.png";//getAtributo("nomIcono");
+        nomIcono=path+"avion2.jpg";//getAtributo("nomIcono");
  
         this.equipo = equipo;
         Icono = this.cargarImagenes(nomIcono); 
